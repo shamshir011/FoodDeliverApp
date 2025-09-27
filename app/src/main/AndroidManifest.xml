@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/food_app"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/food_app"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WaveOfFood"
+        tools:targetApi="31">
+
+        <activity
+            android:name="com.examples.waveoffood.RecentOrderItems"
+            android:exported="false" />
+        <activity
+            android:name="com.examples.waveoffood.DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.examples.waveoffood.PayOutActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.examples.waveoffood.ChooseLocationActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.examples.waveoffood.SignActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.examples.waveoffood.LoginActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name="com.examples.waveoffood.StartActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.examples.waveoffood.Splash_Screen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.examples.waveoffood.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+
+        <service android:name="com.examples.waveoffood.PushNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/bell"/>
+    </application>
+
+</manifest>

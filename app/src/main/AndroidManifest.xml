@@ -49,6 +49,7 @@
         <activity
             android:name="com.examples.waveoffood.MainActivity"
             android:exported="true"
+            android:theme="@style/themes"
             android:windowSoftInputMode="adjustPan" />
 
         <service android:name="com.examples.waveoffood.PushNotificationService"

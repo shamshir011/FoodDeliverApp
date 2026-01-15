@@ -1,6 +1,9 @@
 package com.examples.waveoffood
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -22,13 +25,39 @@ class MainActivity : AppCompatActivity(){
         enableEdgeToEdge()
         setContentView(binding.root)
 
+        supportActionBar!!.title = "Explore Your Favourite Food"
+
         val navController: NavController = findNavController(R.id.fragmentContainerView)
         val bottomNav: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.setupWithNavController(navController)
 
-        binding.notificationButton.setOnClickListener {
-            val bottomSheetDialog = Notification_Bottom_Fragment()
-            bottomSheetDialog.show(supportFragmentManager,"Test")
+//        binding.notificationButton.setOnClickListener {
+//            val bottomSheetDialog = Notification_Bottom_Fragment()
+//            bottomSheetDialog.show(supportFragmentManager,"Test")
+//        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean{
+        menuInflater.inflate(R.menu.food_according_to_sick, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.diabetes){
+            Toast.makeText(this, "Diabetes Diet", Toast.LENGTH_SHORT).show()
         }
+        else if (item.itemId == R.id.weightLose){
+            Toast.makeText(this, "Weight Lose Diet", Toast.LENGTH_SHORT).show()
+        }
+        else if(item.itemId == R.id.DeliveryDiet){
+            Toast.makeText(this, "After Delivery Diet", Toast.LENGTH_SHORT).show()
+        }
+        else if(item.itemId == R.id.postpartumNutrition){
+            Toast.makeText(this, "Postpartum Nutrition", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

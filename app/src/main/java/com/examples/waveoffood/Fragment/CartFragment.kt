@@ -49,6 +49,14 @@ class CartFragment : Fragment() {
 
         cartFragmentBinding.proceedButton.setOnClickListener {
             //Get order items details before proceeding to check out
+            if (cartAdapter.itemCount == 0) {
+                Toast.makeText(
+                    requireContext(),
+                    "Your cart is empty",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
             getOrderItemsDetails()
         }
 

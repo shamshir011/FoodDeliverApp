@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WaveOfFood</string>
     <string name="activity">Activity</string>
+    <string name="default_web_client_id">212594530981-vtpumhtmjbepftvlbto9kh58sv5v8tjb.apps.googleusercontent.com</string>
     <string name="next">Next</string>
     <string name="enjoy_restaurant_quality_meals_nat_home">Enjoy Restaurant Quality Meals \nat Home</string>
     <string name="google">Google</string>

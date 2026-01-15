@@ -43,7 +43,6 @@ class MenuBottomSheetFragment : BottomSheetDialogFragment(){
 
         return binding.root
     }
-
     private fun retrieveMenuItems(){
         database = FirebaseDatabase.getInstance()
         val foodRef: DatabaseReference = database.reference.child("menu")

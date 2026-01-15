@@ -73,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun createUserAccount() {
+    private fun createUserAccount(){
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task->
             if(task.isSuccessful){
                 val user = auth.currentUser
@@ -134,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onStart() {
+    override fun onStart(){
         super.onStart()
         val currentUser: FirebaseUser? = auth.currentUser
         if(currentUser != null){

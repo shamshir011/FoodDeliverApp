@@ -88,7 +88,8 @@ class CardAdapter(
 
                     val itemPosition =  adapterPosition
                     if(itemPosition != RecyclerView.NO_POSITION){
-                        deleteItem(position)
+//                        deleteItem(position)
+                        deleteItem(itemPosition)
                     }
                 }
             }
@@ -121,7 +122,8 @@ class CardAdapter(
         private fun removeItem(position: Int, uniqueKey: String) {
             if(uniqueKey != null){
                 cartItemsReference.child(uniqueKey).removeValue().addOnSuccessListener {
-                    cartItems.removeAt(position)
+
+//                    cartItems.removeAt(position)
                     cartFoodImages.removeAt(position)
                     cartDescriptions.removeAt(position)
                     cartQuantity.removeAt(position)

@@ -60,7 +60,8 @@ class DetailsActivity : AppCompatActivity() {
         val userId = auth.currentUser?.uid?:""
 
         //Create a cartItems object
-        val cartItems = CartItems(foodName.toString(), foodPrice.toString(), foodDescription.toString(), foodImage.toString(),1)
+//        val cartItems = CartItems(foodName.toString(), foodPrice.toString(), foodDescription.toString(), foodImage.toString(),1)
+        val cartItems = CartItems(foodName = foodName, foodPrice = foodPrice, foodDescription = foodDescription, foodImage = foodImage, foodQuantity = 1)
 
         //Save data to cart item to firebase database
         database.child("user").child(userId).child("CartItems").push().setValue(cartItems)

@@ -14,11 +14,8 @@ import com.examples.waveoffood.Model.MenuItem
 
 class MenuAdapter(
     private val menuItems: List<MenuItem>,
-    private val requireContext: Context )
+    private val requireContext: Context)
     : RecyclerView.Adapter<MenuAdapter.MenuViewHolder>(){
-
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val binding = MenuItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)

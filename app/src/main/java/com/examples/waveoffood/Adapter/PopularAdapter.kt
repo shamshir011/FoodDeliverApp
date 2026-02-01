@@ -21,8 +21,6 @@ class PopularAdapter(
         return PopularViewHolder(PopularItemBinding.inflate(LayoutInflater.from(parent.context),parent, false ))
     }
 
-
-
     override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {
         val item = items[position]
         val image = image[position]

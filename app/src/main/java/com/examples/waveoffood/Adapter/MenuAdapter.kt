@@ -66,7 +66,6 @@ class MenuAdapter(
                 val uri = Uri.parse(menuItem.foodImage)
                 Glide.with(requireContext).load(uri).into(menuImage)
             }
-
         }
     }
 }

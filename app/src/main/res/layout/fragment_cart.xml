@@ -37,6 +37,7 @@
         android:layout_width="325dp"
         android:layout_height="57dp"
         android:layout_marginBottom="65dp"
+        android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/proceed_button_shape"
         android:fontFamily="@font/yeon_sung"
         android:text="Proceed"

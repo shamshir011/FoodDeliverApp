@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity(){
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        supportActionBar!!.title = "Explore Your Favourite Food"
 
         val navController: NavController = findNavController(R.id.fragmentContainerView)
         val bottomNav: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)

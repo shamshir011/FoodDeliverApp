@@ -9,7 +9,7 @@
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="login">Login</string>
-    <string name="wave_of_food">Wave Of Food</string>
+    <string name="wave_of_food">Food Delivery App</string>
     <string name="login_to_your_account">Login To Your Account</string>
     <string name="or">Or</string>
     <string name="create_account">Create Account</string>
@@ -63,4 +63,5 @@ the main programming languages.XML is used" </string>
     <string name="edit_profile">Edit Profile</string>
     <string name="received">Received</string>
     <string name="dismiss">Dismiss</string>
+    <string name="pizza">Pizza</string>
 </resources>

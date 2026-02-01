@@ -1,6 +1,7 @@
 package com.examples.waveoffood.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,13 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.waveoffood.databinding.FragmentHomeBinding
 import com.examples.waveoffood.Adapter.PopularAdapter
 import com.example.waveoffood.R
+import com.examples.waveoffood.Adapter.FoodCategoryAdapter
 import com.examples.waveoffood.Adapter.MenuAdapter
+import com.examples.waveoffood.Model.FoodCategory
 import com.examples.waveoffood.Model.MenuItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
@@ -27,11 +31,14 @@ class HomeFragment : Fragment() {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var menuItems: MutableList<MenuItem>
+    private lateinit var foodCategories: MutableList<FoodCategory>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        foodCategories = mutableListOf()
         // Inflate the layout for this fragment
         homeFragmentBiding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
@@ -41,7 +48,9 @@ class HomeFragment : Fragment() {
         }
 
         // Retrieve and display popular menu items
+        retrieveFoodCategoryData()
         retrieveAndDisplayPopularItem()
+
 
         return homeFragmentBiding.root
 
@@ -59,7 +68,11 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot){
                 for(foodSnapShot in snapshot.children){
                     val menuItem = foodSnapShot.getValue(MenuItem::class.java)
-                    menuItem?.let { menuItems.add(it) }
+                    menuItem?.let {
+                        menuItems.add(it)
+                        homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
+                        homeFragmentBiding.popularRecyclerView.visibility = View.VISIBLE
+                    }
                 }
                 //Display a random popular item
                 randomPopularItem()
@@ -83,6 +96,56 @@ class HomeFragment : Fragment() {
         homeFragmentBiding.popularRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         homeFragmentBiding.popularRecyclerView.adapter = adapter
     }
+
+//    ********************  Retrieve food category data from database   ******************************
+
+    private fun retrieveFoodCategoryData(){
+        database = FirebaseDatabase.getInstance()
+        val foodRef: DatabaseReference = database.reference.child("FoodCategory")
+
+        // Fetch data from data base
+        foodRef.addListenerForSingleValueEvent(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // Clear existing data before populating
+                foodCategories.clear()
+
+                // loop for through each food item
+                for(foodSnapshot in snapshot.children){
+                    val foodCategory = foodSnapshot.getValue(FoodCategory::class.java)
+                    foodCategory?.let {
+                        foodCategories.add(it)
+                        homeFragmentBiding.categoryProgressBar.visibility = View.INVISIBLE
+                        homeFragmentBiding.recyclerViewCategory.visibility = View.VISIBLE
+                    }
+                }
+//*******************************     Showing limit data to recyclerview   **********************************
+//                categoryItem()
+                setFoodCategoryAdapter()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("DatabaseError", "Error: ${error.message}")
+            }
+        })
+    }
+
+//    private fun categoryItem() {
+//        val numItemToShow = 10
+//        val subsetCategoryItems = foodCategories.take(numItemToShow)
+//
+//        setFoodCategoryAdapter(subsetCategoryItems)
+//    }
+//    subsetFoodCategories: List<FoodCategory>
+//    **********************        Adapter to show food category       *********************
+private fun setFoodCategoryAdapter(){
+    val adapter = FoodCategoryAdapter(foodCategories)
+
+    homeFragmentBiding.recyclerViewCategory.layoutManager =
+        LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+    homeFragmentBiding.recyclerViewCategory.adapter = adapter
+}
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)

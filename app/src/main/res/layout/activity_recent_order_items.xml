@@ -27,6 +27,7 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="8dp"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="40dp"
         android:background="@android:color/transparent"
         android:scaleType="centerCrop"

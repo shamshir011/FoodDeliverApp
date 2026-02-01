@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/g10" />
+        app:srcCompat="@drawable/food_image1" />
 
     <TextView
         android:id="@+id/textView4"
@@ -25,7 +25,7 @@
         android:text="@string/enjoy_restaurant_quality_meals_nat_home"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:textColor="@color/textColor"
+        android:textColor="@color/crimsonRed"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView"/>
@@ -38,6 +38,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/greenbuttongradient"
         android:text="@string/next"
+        android:foreground="?attr/selectableItemBackground"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -55,7 +56,7 @@
         android:fontFamily="@font/yeon_sung"
         android:text="Design By \n Shamshir"
         android:textAlignment="center"
-        android:textColor="@color/textColor"
+        android:textColor="@color/crimsonRed"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

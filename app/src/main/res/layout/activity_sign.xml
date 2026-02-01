@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo_food_image" />
 
     <TextView
         android:id="@+id/textView13"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/yeon_sung"
-        android:text="Waves Of Food"
+        android:text="@string/wave_of_food"
         android:textColor="@color/black"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView4"
@@ -37,7 +37,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/lato_bold"
         android:text="Delivery Favourite Food"
-        android:textColor="@color/textColor"
+        android:textColor="@color/crimsonRed"
         app:layout_constraintEnd_toEndOf="@+id/textView13"
         app:layout_constraintStart_toStartOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -49,7 +49,7 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/yeon_sung"
         android:text="Sign Up Here"
-        android:textColor="@color/textColor"
+        android:textColor="@color/crimsonRed"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textView14"
         app:layout_constraintStart_toStartOf="@+id/textView14"
@@ -167,6 +167,7 @@
         android:layout_width="157dp"
         android:layout_height="57dp"
         android:layout_marginTop="16dp"
+        android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/greenbuttongradient"
         android:fontFamily="@font/lato"
         android:text="@string/create_account"
@@ -182,7 +183,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/already_have_an_account"
-        android:textColor="@color/textColor"
+        android:textColor="@color/crimsonRed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

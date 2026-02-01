@@ -32,6 +32,7 @@
             android:src="@drawable/order_placed" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:foreground="?attr/selectableItemBackground"
             android:id="@+id/goHome"
             android:layout_width="157dp"
             android:layout_height="57dp"

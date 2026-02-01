@@ -9,9 +9,10 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="21dp"
+        android:layout_height="22dp"
         android:layout_marginStart="8dp"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"

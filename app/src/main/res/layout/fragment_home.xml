@@ -42,30 +42,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewMenuId"/>
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="@string/popular"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/viewMenuId"
         android:layout_width="80dp"
         android:layout_height="25dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/text_view_shape"
         android:elevation="5dp"
         android:fontFamily="@font/lato_bold"
+        android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
         android:text="View Menu"
-        android:textColor="@color/textColor"
+        android:textColor="@color/crimsonRed"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewCategory" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCategory"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <ProgressBar
+        android:id="@+id/categoryProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/crimsonRed"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCategory"
+        app:layout_constraintEnd_toEndOf="@+id/recyclerViewCategory"
+        app:layout_constraintStart_toStartOf="@+id/recyclerViewCategory"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewCategory" />
+
+    <ProgressBar
+        android:id="@+id/recommendedProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/crimsonRed"
+        app:layout_constraintBottom_toBottomOf="@+id/popularRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/popularRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/popularRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/popularRecyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

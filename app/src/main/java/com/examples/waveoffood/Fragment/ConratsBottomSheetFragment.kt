@@ -29,8 +29,12 @@ class ConratsBottomSheetFragment : BottomSheetDialogFragment(){
         binding =  FragmentConratsBottomSheetBinding.inflate(layoutInflater, container, false)
 
         binding.goHome.setOnClickListener{
-//            val intent = Intent(requireContext(), MainActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(requireContext(), MainActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                // or shorter: flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+
+            startActivity(intent)
             dismiss()
         }
 

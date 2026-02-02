@@ -12,10 +12,10 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.waveoffood.databinding.FragmentHomeBinding
-import com.examples.waveoffood.Adapter.PopularAdapter
 import com.example.waveoffood.R
 import com.examples.waveoffood.Adapter.FoodCategoryAdapter
 import com.examples.waveoffood.Adapter.MenuAdapter
+import com.examples.waveoffood.Model.CategoryItem
 import com.examples.waveoffood.Model.FoodCategory
 import com.examples.waveoffood.Model.MenuItem
 import com.google.firebase.database.DataSnapshot
@@ -32,6 +32,7 @@ class HomeFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var menuItems: MutableList<MenuItem>
     private lateinit var foodCategories: MutableList<FoodCategory>
+    private val CATEGORY_LIMIT = 10
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -106,20 +107,16 @@ class HomeFragment : Fragment() {
         // Fetch data from data base
         foodRef.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                // Clear existing data before populating
                 foodCategories.clear()
-
-                // loop for through each food item
-                for(foodSnapshot in snapshot.children){
+                for (foodSnapshot in snapshot.children) {
                     val foodCategory = foodSnapshot.getValue(FoodCategory::class.java)
                     foodCategory?.let {
                         foodCategories.add(it)
-                        homeFragmentBiding.categoryProgressBar.visibility = View.INVISIBLE
-                        homeFragmentBiding.recyclerViewCategory.visibility = View.VISIBLE
                     }
                 }
-//*******************************     Showing limit data to recyclerview   **********************************
-//                categoryItem()
+                homeFragmentBiding.categoryProgressBar.visibility = View.INVISIBLE
+                homeFragmentBiding.recyclerViewCategory.visibility = View.VISIBLE
+
                 setFoodCategoryAdapter()
             }
 
@@ -129,22 +126,44 @@ class HomeFragment : Fragment() {
         })
     }
 
-//    private fun categoryItem() {
-//        val numItemToShow = 10
-//        val subsetCategoryItems = foodCategories.take(numItemToShow)
-//
-//        setFoodCategoryAdapter(subsetCategoryItems)
-//    }
-//    subsetFoodCategories: List<FoodCategory>
-//    **********************        Adapter to show food category       *********************
-private fun setFoodCategoryAdapter(){
-    val adapter = FoodCategoryAdapter(foodCategories)
+private fun setFoodCategoryAdapter() {
+
+    val uiList = mutableListOf<CategoryItem>()
+
+    // Take only limited items
+    val limitedList = if (foodCategories.size > CATEGORY_LIMIT) {
+        foodCategories.take(CATEGORY_LIMIT)
+    } else {
+        foodCategories
+    }
+    // Convert to UI items
+    limitedList.forEach {
+        uiList.add(CategoryItem.Food(it))
+    }
+
+    // Add View All ONLY if there are more items
+    if (foodCategories.size > CATEGORY_LIMIT) {
+        uiList.add(CategoryItem.ViewAll)
+    }
+
+    val adapter = FoodCategoryAdapter(
+        uiList,
+        onCategoryClick = { category ->
+            Toast.makeText(requireContext(), "${category.foodCategoryName} clicked", Toast.LENGTH_SHORT).show()
+        },
+        onViewAllClick = {
+                val bottomSheetDialog = CuisineDishesBottomSheetFragment()
+                bottomSheetDialog.show(parentFragmentManager, "Test")
+        }
+    )
 
     homeFragmentBiding.recyclerViewCategory.layoutManager =
         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
     homeFragmentBiding.recyclerViewCategory.adapter = adapter
 }
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){

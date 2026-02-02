@@ -70,8 +70,8 @@
 
     <ProgressBar
         android:id="@+id/categoryProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/crimsonRed"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCategory"

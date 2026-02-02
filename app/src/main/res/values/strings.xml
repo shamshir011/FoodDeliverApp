@@ -64,4 +64,6 @@ the main programming languages.XML is used" </string>
     <string name="received">Received</string>
     <string name="dismiss">Dismiss</string>
     <string name="pizza">Pizza</string>
+    <string name="cuisines_and_dishes">Cuisines and dishes</string>
+    <string name="burger">Burger</string>
 </resources>

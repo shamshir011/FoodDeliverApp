@@ -47,6 +47,7 @@ class HomeFragment : Fragment() {
     private lateinit var restaurantRecommendedAdapter: RestaurantRecommendedAdapter
     private val CATEGORY_LIMIT = 10
     private lateinit var restaurantAdapter: RestaurantAdapter
+    private lateinit var foodCategoryAdapter: FoodCategoryAdapter
 
     private val restaurantList = mutableListOf<RestaurantModel>()
     private val foodMap = mutableMapOf<String, List<FoodItemModel>>()
@@ -66,6 +67,8 @@ class HomeFragment : Fragment() {
             bottomSheetDialog.show(parentFragmentManager, "Test")
         }
 
+
+
         // Retrieve and display popular menu items
         retrieveFoodCategoryData()
         retrieveRestaurantItems()
@@ -78,46 +81,6 @@ class HomeFragment : Fragment() {
 
 
     }
-
-//    private fun retrieveAndDisplayPopularItem() {
-//        //Get reference to the database
-//        database = FirebaseDatabase.getInstance()
-//        val foodRef = database.reference.child("menu")
-//        menuItems = mutableListOf()
-//
-////        retrieve item from the database
-//        foodRef.addListenerForSingleValueEvent(object: ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot){
-//                for(foodSnapShot in snapshot.children){
-//                    val menuItem = foodSnapShot.getValue(MenuItem::class.java)
-//                    menuItem?.let {
-//                        menuItems.add(it)
-//                        homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
-//                        homeFragmentBiding.popularRecyclerView.visibility = View.VISIBLE
-//                    }
-//                }
-//                //Display a random popular item
-//                randomPopularItem()
-//            }
-//            override fun onCancelled(error: DatabaseError){
-//
-//            }
-//        })
-//    }
-//    private fun randomPopularItem() {
-//        //Create as shuffled list of menu items
-//        val index = menuItems.indices.toList().shuffled()
-//        val numItemToShow = 6
-//        val subsetMenuItems = index.take(numItemToShow).map { menuItems[it] }
-//
-//        setPopularItemsAdapter(subsetMenuItems)
-//    }
-//
-//    private fun setPopularItemsAdapter(subsetMenuItems: List<MenuItem>){
-//        val adapter = MenuAdapter(subsetMenuItems,requireContext())
-//        homeFragmentBiding.popularRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-//        homeFragmentBiding.popularRecyclerView.adapter = adapter
-//    }
 
 //    ********************  Retrieve food category data from database   ******************************
 
@@ -287,11 +250,6 @@ private fun fetchRestaurants() {
     }
 
 
-
-
-
-
-
     //    This adapter for category place
 private fun setFoodCategoryAdapter(){
 
@@ -313,36 +271,32 @@ private fun setFoodCategoryAdapter(){
         uiList.add(CategoryItem.ViewAll)
     }
 
-    val adapter = FoodCategoryAdapter(
-        uiList,
-//        onCategoryClick = { category ->
-//            Toast.makeText(requireContext(), "${category.foodCategoryName} clicked", Toast.LENGTH_SHORT).show()
-//        },
+        foodCategoryAdapter = FoodCategoryAdapter(
+            uiList,
+            onCategoryClick = { category ->
+                val categoryName = category.foodCategoryName ?: return@FoodCategoryAdapter
 
-//      **********  This the updated code   ************
-        onCategoryClick = { category ->
-
-            val categoryName = category.foodCategoryName ?: return@FoodCategoryAdapter
-
-            if (categoryName == "All"){
-                fetchRestaurants()
-                retrieveRestaurantItems()
-            } else {
-                loadRestaurantsByCategory(categoryName)
+                if (categoryName == "All") {
+                    fetchRestaurants()
+                    retrieveRestaurantItems()
+                } else {
+                    loadRestaurantsByCategory(categoryName)
+                }
+            },
+            onViewAllClick = {
+                openBottomSheet()
             }
-        },
+        )
 
-        onViewAllClick = {
-                val bottomSheetDialog = CuisineDishesBottomSheetFragment()
-                bottomSheetDialog.show(parentFragmentManager, "Test")
-        }
-    )
+//        homeFragmentBiding.recyclerViewCategory.adapter = foodCategoryAdapter
 
-    homeFragmentBiding.recyclerViewCategory.layoutManager =
+
+
+        homeFragmentBiding.recyclerViewCategory.layoutManager =
         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-    homeFragmentBiding.recyclerViewCategory.adapter = adapter
-}
+    homeFragmentBiding.recyclerViewCategory.adapter = foodCategoryAdapter
+    }
 
 private fun restaurantSetAdapter() {
     restaurantRecommendedAdapter =
@@ -387,6 +341,101 @@ private fun restaurantSetAdapter() {
                 Toast.makeText(requireContext(), itemMessage, Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun highlightSelectedCategory(categoryName: String?) {
+        foodCategoryAdapter.setSelectedCategory(categoryName)
+    }
+
+    private fun showSelectedCategoryInHome(categoryName: String) {
+
+        val selectedItem = foodCategories.find {
+            it.foodCategoryName == categoryName
+        } ?: return
+
+        val newList = mutableListOf<CategoryItem>()
+
+
+
+        foodCategories
+            .filter { it.foodCategoryName != categoryName }
+            .take(CATEGORY_LIMIT - 1)
+            .forEach {
+                newList.add(CategoryItem.Food(it))
+            }
+
+        newList.add(CategoryItem.Food(selectedItem))
+
+        newList.add(CategoryItem.ViewAll)
+
+
+        // Update RecyclerView manually
+//        homeFragmentBiding.recyclerViewCategory.adapter =
+//            FoodCategoryAdapter(
+//                newList,
+//                onCategoryClick = { category ->
+//                    val name = category.foodCategoryName ?: return@FoodCategoryAdapter
+//                    highlightSelectedCategory(name)
+//
+//                    if (name == "All") {
+//                        fetchRestaurants()
+//                        retrieveRestaurantItems()
+//                    } else {
+//                        loadRestaurantsByCategory(name)
+//                    }
+//                },
+//                onViewAllClick = {
+//                    openBottomSheet()
+//                }
+//            )
+
+
+
+        foodCategoryAdapter = FoodCategoryAdapter(
+            newList,
+            onCategoryClick = { category ->
+                val name = category.foodCategoryName ?: return@FoodCategoryAdapter
+                highlightSelectedCategory(name)
+
+                if (name == "All") {
+                    fetchRestaurants()
+                    retrieveRestaurantItems()
+                } else {
+                    loadRestaurantsByCategory(name)
+                }
+            },
+            onViewAllClick = {
+                openBottomSheet()
+            }
+        )
+
+        homeFragmentBiding.recyclerViewCategory.adapter = foodCategoryAdapter
+
+
+        // Highlight
+        highlightSelectedCategory(categoryName)
+    }
+
+
+//    Now added
+    private fun openBottomSheet() {
+
+        val bottomSheet = CuisineDishesBottomSheetFragment()
+
+        bottomSheet.categoryClickListener = { selectedCategory ->
+            selectedCategory.foodCategoryName?.let { categoryName ->
+                showSelectedCategoryInHome(categoryName)
+
+                if (categoryName == "All") {
+                    fetchRestaurants()
+                    retrieveRestaurantItems()
+                } else {
+                    loadRestaurantsByCategory(categoryName)
+                }
+            }
+        }
+
+        bottomSheet.show(parentFragmentManager, "BottomSheet")
     }
 
     override fun onStart() {

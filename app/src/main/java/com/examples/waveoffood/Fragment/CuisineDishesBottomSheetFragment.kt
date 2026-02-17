@@ -21,6 +21,7 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentCusineDishesBottomSheetBinding
     private lateinit var database: FirebaseDatabase
     private lateinit var cuisineDishes: MutableList<FoodCategory>
+    var categoryClickListener: ((FoodCategory) -> Unit)? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,9 +36,6 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
 
         binding = FragmentCusineDishesBottomSheetBinding.inflate(layoutInflater, container, false)
 
-//        binding.buttonBack.setOnClickListener{
-//            dismiss()
-//        }
 
 
 
@@ -58,9 +56,6 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
                     val cuisineDish = foodSnapshot.getValue(FoodCategory::class.java)
                     cuisineDish?.let {
                         cuisineDishes.add(it)
-
-//                        binding.cuisineDishProgressBar.visibility = View.INVISIBLE
-//                        binding.cuisineDishProgressBar.visibility = View.VISIBLE
                     }
                 }
                 binding.cuisineDishProgressBar.visibility = View.GONE
@@ -79,7 +74,18 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun setAdapter() {
         if(cuisineDishes.isNotEmpty()){
-            val adapter = CuisinesDishesAdapter(cuisineDishes, requireContext())
+// *****************           this is the original line     ********************
+//            val adapter = CuisinesDishesAdapter(cuisineDishes, requireContext())
+            val adapter = CuisinesDishesAdapter(
+                cuisineDishes,
+                requireContext()
+            ) { selectedCategory ->
+                // Send selected category to HomeFragment
+                categoryClickListener?.invoke(selectedCategory)
+
+                dismiss() // close bottom sheet
+            }
+
             binding.cuisineDishesRecyclerView.layoutManager = GridLayoutManager(requireContext(),4)
             binding.cuisineDishesRecyclerView.adapter = adapter
             Log.d("ITEMS", "setAdapter: data set")
@@ -87,4 +93,5 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
             Log.d("ITEMS", "setAdapter: data not set")
         }
     }
+
 }

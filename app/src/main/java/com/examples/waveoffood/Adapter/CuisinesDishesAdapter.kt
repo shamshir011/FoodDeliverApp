@@ -13,7 +13,10 @@ import com.examples.waveoffood.Model.FoodCategory
 
 class CuisinesDishesAdapter(
     private val cuisineDishes: List<FoodCategory>,
-    private val requireContext: Context)
+    private val requireContext: Context,
+    private val onItemClick: (FoodCategory) -> Unit
+)
+
     : RecyclerView.Adapter<CuisinesDishesAdapter.CuisineDishesViewHolder>()
 {
 
@@ -33,16 +36,15 @@ class CuisinesDishesAdapter(
     inner class CuisineDishesViewHolder(private val binding: CuisineDishesLayoutDesignBinding): RecyclerView.ViewHolder(binding.root){
 
         // Adapter to another activity
-        init{
-            binding.root.setOnClickListener{
-
+        init {
+            binding.root.setOnClickListener {
                 val position = adapterPosition
-                if(position != RecyclerView.NO_POSITION){
-//                    openDetailsActivity(position)
-                    Toast.makeText(requireContext, "This is the bottom sheet", Toast.LENGTH_SHORT).show()
+                if (position != RecyclerView.NO_POSITION){
+                    onItemClick(cuisineDishes[position])
                 }
             }
         }
+
 
 
 

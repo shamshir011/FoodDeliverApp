@@ -24,6 +24,26 @@ class FoodCategoryAdapter(
 
     override fun getItemCount(): Int = categoryItems.size
 
+    fun setSelectedCategory(categoryName: String?) {
+
+        val index = categoryItems.indexOfFirst {
+            it is CategoryItem.Food &&
+                    it.foodCategory.foodCategoryName == categoryName
+        }
+
+        if (index != -1 && index != selectedPosition) {
+
+            val previousPosition = selectedPosition
+            selectedPosition = index
+
+            notifyItemChanged(previousPosition)
+            notifyItemChanged(selectedPosition)
+        }
+    }
+
+
+
+
     override fun getItemViewType(position: Int): Int {
         return when (categoryItems[position]) {
             is CategoryItem.Food -> TYPE_CATEGORY

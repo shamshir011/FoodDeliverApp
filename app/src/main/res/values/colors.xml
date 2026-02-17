@@ -7,5 +7,13 @@
     <color name="endColor">#F15C6D</color>
     <color name="iconColor">#FEAD1D</color>
     <color name="crimsonRed">#E23744</color>
+    <color name="clockMins">#13CC1A</color>
+    <color name="dotTransparent">#80FFFFFF</color>
+    <color name="transparent">#80ABABAB</color>
+    <color name="darkerEdgeBlue">#1E5FDB</color>
+    <color name="mainBlue">#2F80ED</color>
+    <color name="lightBlue">#4DA3FF</color>
+    <color name="darkGreen">#2E7D32</color>
+    <color name="darkerGreen">#5FAF4E</color>
 
 </resources>

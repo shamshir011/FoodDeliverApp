@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginEnd="8dp"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            app:cardCornerRadius="15sp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="270dp">-->
+
+
+<!--                <androidx.viewpager2.widget.ViewPager2-->
+<!--                    android:id="@+id/bannerViewPager"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:background="@color/crimsonRed"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator-->
+<!--                    android:id="@+id/dotsIndicator"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginEnd="4dp"-->
+<!--                    android:layout_marginBottom="4dp"-->
+<!--                    app:dotsColor="@color/dotTransparent"-->
+<!--                    app:dotsSize="10dp"-->
+<!--                    app:dotsSpacing="4dp"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/bannerViewPager"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/bannerViewPager"-->
+<!--                    app:selectedDotColor="@color/white" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView40"-->
+<!--                    android:layout_width="110dp"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:background="@drawable/free_delivery_design"-->
+<!--                    android:fontFamily="@font/lato_bold"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="@string/free_delivery"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/bannerViewPager"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/bannerViewPager" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView41"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:fontFamily="@font/lato_bold"-->
+<!--                    android:text="KFC"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="20sp"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/bannerViewPager" />-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView7"-->
+<!--                    android:layout_width="18dp"-->
+<!--                    android:layout_height="18dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/textView41"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView41"-->
+<!--                    app:srcCompat="@drawable/flash_on_icon" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView42"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="15-20 mins"-->
+<!--                    android:textColor="@color/darkerGreen"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/imageView7"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/imageView7"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/imageView7" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView43"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="20sp"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:text="|"-->
+<!--                    android:textColor="@color/darkerGreen"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/textView42"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/textView42"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/textView42" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView44"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:text="2.5km"-->
+<!--                    android:textColor="@color/darkerGreen"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/textView43"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/textView43"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/textView43"-->
+<!--                    app:layout_constraintVertical_bias="0.0"/>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="25dp"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:backgroundTint="@color/transparent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center">-->
+
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView38"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="8dp"-->
+<!--                            android:text="Indi Tandoori Pizza"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView39"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="8dp"-->
+<!--                            android:text="₹"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintStart_toEndOf="@+id/textView38"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"/>-->
+
+<!--                        <TextView-->
+<!--                            android:id="@+id/textView45"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginEnd="8dp"-->
+<!--                            android:text="250"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintStart_toEndOf="@+id/textView39"-->
+<!--                            app:layout_constraintTop_toTopOf="parent"-->
+<!--                            app:layout_constraintVertical_bias="0.0" />-->
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--        </androidx.cardview.widget.CardView>-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+
+
+
+
+<!--  *****************  This code for Used************************** -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- ViewPager Banner -->
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/bannerViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Dots Indicator -->
+                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                    android:id="@+id/dotsIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    app:dotsColor="@color/dotTransparent"
+                    app:dotsSize="8dp"
+                    app:dotsSpacing="2dp"
+                    app:selectedDotColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/bannerViewPager"
+                    app:layout_constraintEnd_toEndOf="@id/bannerViewPager" />
+
+                <!-- FREE DELIVERY Badge -->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/free_delivery_design"
+                    android:gravity="center"
+                    android:text="FREE delivery"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/bannerViewPager"
+                    app:layout_constraintStart_toStartOf="@id/bannerViewPager" />
+
+                <!-- Restaurant Name -->
+                <TextView
+                    android:id="@+id/textViewRestaurantName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:text="KFC"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/bannerViewPager" />
+
+                <!-- Time & Distance -->
+                <TextView
+                    android:id="@+id/textView42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="15-20"
+                    android:textColor="@color/darkerGreen"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textViewRestaurantName" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="mins"
+                    android:textColor="@color/darkerGreen"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView42"
+                    app:layout_constraintStart_toEndOf="@+id/textView42"
+                    app:layout_constraintTop_toTopOf="@+id/textView42" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20sp"
+                    android:layout_marginStart="4dp"
+                    android:text="|"
+                    android:textColor="@color/darkerGreen"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView40"
+                    app:layout_constraintStart_toEndOf="@+id/textView40"
+                    app:layout_constraintTop_toTopOf="@+id/textView40" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="2km"
+                    android:textColor="@color/darkerGreen"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView43"
+                    app:layout_constraintStart_toEndOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/textView43" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,6 +59,7 @@ dependencies {
     implementation(libs.firebase.storage)
     implementation(libs.androidx.recyclerview)
     implementation(libs.firebase.messaging)
+    implementation(libs.androidx.cardview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,4 +67,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:20.7.0")
     //This dependency for glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
 }

@@ -26,4 +26,15 @@
         app:layout_constraintEnd_toEndOf="@+id/categoryImage"
         app:layout_constraintStart_toStartOf="@+id/categoryImage"
         app:layout_constraintTop_toBottomOf="@+id/categoryImage" />
+
+    <View
+        android:id="@+id/selectedLine"
+        android:layout_width="70dp"
+        android:layout_height="3dp"
+        android:background="@drawable/selected_category_design"
+        app:layout_constraintEnd_toEndOf="@+id/categoryName"
+        app:layout_constraintStart_toStartOf="@+id/categoryName"
+        app:layout_constraintTop_toBottomOf="@+id/categoryName" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

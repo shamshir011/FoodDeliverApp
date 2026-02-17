@@ -34,7 +34,7 @@
     <string name="popular">Popular</string>
     <string name="_1">1</string>
     <string name="carts">Cart</string>
-    <string name="searchBarHint">What do you want to order?</string>
+    <string name="searchBarHint">Search for Food</string>
     <string name="buy_again">Buy Again</string>
     <string name="_5">$5</string>
     <string name="foodname">FoodName</string>
@@ -66,4 +66,6 @@ the main programming languages.XML is used" </string>
     <string name="pizza">Pizza</string>
     <string name="cuisines_and_dishes">Cuisines and dishes</string>
     <string name="burger">Burger</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="free_delivery">Free Delivery</string>
 </resources>

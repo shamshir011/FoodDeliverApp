@@ -44,6 +44,22 @@ class CuisinesDishesAdapter(
             }
         }
 
+
+
+        // Set data in to recyclerview items, price, image
+        fun bind(position: Int){
+            val cuisineDish  = cuisineDishes[position]
+            binding.apply{
+                textViewCuisineDish.text = cuisineDish.foodCategoryName
+                val uri = Uri.parse(cuisineDish.foodCategoryImage)
+                Glide.with(requireContext).load(uri).into(imageViewCuisineDish)
+            }
+        }
+    }
+}
+
+
+
 //        private fun openDetailsActivity(position: Int) {
 //            val menuItems = cuisineDishes[position]
 //            // A intent to open details activity and pass the data
@@ -57,15 +73,3 @@ class CuisinesDishesAdapter(
 //            // Start the details activity
 //            requireContext.startActivity(intent)
 //        }
-
-        // Set data in to recyclerview items, price, image
-        fun bind(position: Int){
-            val cuisineDish  = cuisineDishes[position]
-            binding.apply{
-                textViewCuisineDish.text = cuisineDish.foodCategoryName
-                val uri = Uri.parse(cuisineDish.foodCategoryImage)
-                Glide.with(requireContext).load(uri).into(imageViewCuisineDish)
-            }
-        }
-    }
-}

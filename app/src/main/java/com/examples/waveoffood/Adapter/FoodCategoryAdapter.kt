@@ -2,6 +2,7 @@ package com.examples.waveoffood.Adapter
 
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -15,6 +16,7 @@ class FoodCategoryAdapter(
     private val onViewAllClick: () -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    private var selectedPosition = 0
     companion object {
         private const val TYPE_CATEGORY = 0
         private const val TYPE_VIEW_ALL = 1
@@ -58,17 +60,27 @@ class FoodCategoryAdapter(
         private val binding: FoodCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(category: FoodCategory) {
-            binding.categoryName.text = category.foodCategoryName
+fun bind(category: FoodCategory) {
 
-            Glide.with(binding.root.context)
-                .load(category.foodCategoryImage)
-                .into(binding.categoryImage)
+    binding.categoryName.text = category.foodCategoryName
 
-            binding.root.setOnClickListener {
-                onCategoryClick(category)
-            }
-        }
+    Glide.with(binding.root.context)
+        .load(category.foodCategoryImage)
+        .into(binding.categoryImage)
+
+    if (adapterPosition == selectedPosition) {
+        binding.selectedLine.visibility = View.VISIBLE
+    } else {
+        binding.selectedLine.visibility = View.GONE
+    }
+
+    binding.root.setOnClickListener {
+        selectedPosition = adapterPosition
+        notifyDataSetChanged()
+        onCategoryClick(category)
+    }
+}
+
     }
 
     inner class ViewAllViewHolder(

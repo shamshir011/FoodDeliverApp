@@ -1,51 +1,72 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/cuisines_dishes_bottom_sheep_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.examples.waveoffood.Fragment.CuisineDishesBottomSheetFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/cuisines_and_dishes"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:fontFamily="@font/lato_bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cuisineDishesRecyclerView"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ProgressBar
-            android:id="@+id/cuisineDishProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/crimsonRed"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/cuisineDishesRecyclerView"
-            app:layout_constraintTop_toTopOf="@+id/cuisineDishesRecyclerView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/cuisines_and_dishes"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/lato_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cuisineDishesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <ProgressBar
+                android:id="@+id/cuisineDishProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/crimsonRed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/cuisineDishesRecyclerView"
+                app:layout_constraintTop_toTopOf="@+id/cuisineDishesRecyclerView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+
+
+
+        <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content">-->
+        <!--        &lt;!&ndash; ❌ Dismiss Button &ndash;&gt;-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/btnDismiss"-->
+        <!--            android:layout_width="44dp"-->
+        <!--            android:layout_height="44dp"-->
+        <!--            android:layout_gravity="top|center_horizontal"-->
+        <!--            android:layout_marginTop="-22dp"-->
+        <!--            android:background="@drawable/dismiss_button_bg"-->
+        <!--            android:src="@drawable/dismiss_button_icon"-->
+        <!--            android:padding="10dp"-->
+        <!--            android:elevation="10dp" />-->
+<!--    </FrameLayout>-->
+

@@ -16,9 +16,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-
-import com.google.android.material.R as MaterialR
-
 class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentCusineDishesBottomSheetBinding
@@ -41,6 +38,8 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
 //        binding.buttonBack.setOnClickListener{
 //            dismiss()
 //        }
+
+
 
         retrieveCuisineDishes()
 
@@ -88,7 +87,4 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
             Log.d("ITEMS", "setAdapter: data not set")
         }
     }
-
-
-
 }

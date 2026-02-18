@@ -68,4 +68,5 @@ the main programming languages.XML is used" </string>
     <string name="burger">Burger</string>
     <string name="update_profile">Update Profile</string>
     <string name="free_delivery">Free Delivery</string>
+    <string name="add">ADD</string>
 </resources>

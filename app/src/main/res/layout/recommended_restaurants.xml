@@ -65,15 +65,26 @@
             app:srcCompat="@drawable/clock_icon" />
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/textViewDuration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:text="20-25 mins"
+            android:text="@string/_20_25"
             android:textColor="@color/clockMins"
             app:layout_constraintBottom_toBottomOf="@+id/imageView15"
             app:layout_constraintStart_toEndOf="@+id/imageView15"
             app:layout_constraintTop_toTopOf="@+id/imageView15" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="mins"
+            android:textColor="@color/clockMins"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewDuration"
+            app:layout_constraintStart_toEndOf="@+id/textViewDuration"
+            app:layout_constraintTop_toTopOf="@+id/textViewDuration" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

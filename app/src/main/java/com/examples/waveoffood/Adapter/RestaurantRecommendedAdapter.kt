@@ -41,6 +41,7 @@ class RestaurantRecommendedAdapter(
                 val uriString = restaurantItem.restaurantImage
                 val uri = Uri.parse(uriString)
                 textViewRestaurant.text = restaurantItem.restaurantName
+                textViewDuration.text = restaurantItem.restaurantDeliveryDuration
                 Glide.with(context).load(uri).into(imageViewRestaurant)
             }
 
@@ -56,6 +57,9 @@ class RestaurantRecommendedAdapter(
 
                 val intent = Intent(context, RestaurantItemActivity::class.java)
                 intent.putExtra("restaurantId", restaurantItem.key)
+                intent.putExtra("restaurantName",restaurantItem.restaurantName)
+                intent.putExtra("restaurantDistance",restaurantItem.restaurantDeliveryRadius)
+                intent.putExtra("restaurantDeliveryDuration",restaurantItem.restaurantDeliveryDuration)
                 context.startActivity(intent)
             }
 

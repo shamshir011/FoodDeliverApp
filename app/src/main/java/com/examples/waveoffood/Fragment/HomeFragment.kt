@@ -110,39 +110,6 @@ class HomeFragment : Fragment() {
         })
     }
 
-
-
-//  *******************************  This function retrieving recommended for you data      *****************************
-//    private fun retrieveRestaurantItems(){
-//        database = FirebaseDatabase.getInstance()
-//        val foodRef: DatabaseReference = database.reference.child("Restaurant")
-//
-//        // Fetch data from data base
-//        foodRef.addListenerForSingleValueEvent(object: ValueEventListener{
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                // Clear existing data before populating
-//                restaurantItems.clear()
-//
-//                // loop for through each food item
-//                for(foodSnapshot in snapshot.children){
-//                    val categoryItem = foodSnapshot.getValue(Restaurant::class.java)
-//                    categoryItem?.let {
-//                        restaurantItems.add(it)
-//                    }
-//                    homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
-//                    homeFragmentBiding.recommendedRecyclerView.visibility = View.VISIBLE
-//                }
-//                restaurantSetAdapter()
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.d("DatabaseError", "Error: ${error.message}")
-//            }
-//        })
-//    }
-
-
-//    Its modified data 23:31
 //    This function retrieving recommended for you data
     private fun retrieveRestaurantItems() {
 
@@ -348,25 +315,6 @@ private fun restaurantSetAdapter() {
     homeFragmentBiding.recommendedRecyclerView.layoutManager = gridLayoutManager
     homeFragmentBiding.recommendedRecyclerView.adapter = restaurantRecommendedAdapter
     }
-
-//    Its modified code of the restaurant recommended for you
-//    private fun restaurantSetAdapter() {
-//
-//        if (!::restaurantRecommendedAdapter.isInitialized) {
-//
-//            restaurantRecommendedAdapter =
-//                RestaurantRecommendedAdapter(requireContext(), restaurantItems)
-//
-//            homeFragmentBiding.recommendedRecyclerView.layoutManager =
-//                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-//
-//            homeFragmentBiding.recommendedRecyclerView.adapter =
-//                restaurantRecommendedAdapter
-//
-//        } else {
-//            restaurantRecommendedAdapter.notifyDataSetChanged()
-//        }
-//    }
 
     private fun setupRecyclerView() {
 

@@ -2,6 +2,7 @@ package com.examples.waveoffood
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -38,13 +39,19 @@ class RestaurantItemActivity : AppCompatActivity() {
 
 
 
+
         restaurantId = intent.getStringExtra("restaurantId") ?: ""
+        binding.textViewRadius.text = intent.getStringExtra("restaurantDistance")
+        binding.textViewDuration.text = intent.getStringExtra("restaurantDeliveryDuration")
+        binding.textViewName.text = intent.getStringExtra("restaurantName")
         Log.d("CHECK_ID", "RestaurantId from intent = $restaurantId")
 
         loadFoodItems()
 
     }
     private fun loadFoodItems() {
+
+        binding.progressBar.visibility = View.VISIBLE
 
         val databaseRef = FirebaseDatabase.getInstance().getReference("foodItem")
 
@@ -59,14 +66,20 @@ class RestaurantItemActivity : AppCompatActivity() {
                     for (foodSnapshot in snapshot.children) {
                         Log.d("CHECK_DATA", "Food item: ${foodSnapshot.value}")
                         val item = foodSnapshot.getValue(FoodItemModel::class.java)
-                        item?.let { foodItemList.add(it) }
+                        item?.let {
+                            foodItemList.add(it)
+                        }
                     }
+                    binding.progressBar.visibility = View.GONE
 
                     Log.d("CHECK_DATA", "List size: ${foodItemList.size}")
                     setAdapter()
                 }
 
-                override fun onCancelled(error: DatabaseError) {}
+                override fun onCancelled(error: DatabaseError) {
+                    binding.progressBar.visibility = View.GONE
+                    Log.d("CHECK_DATA", "Error: ${error.message}")
+                }
             })
     }
 

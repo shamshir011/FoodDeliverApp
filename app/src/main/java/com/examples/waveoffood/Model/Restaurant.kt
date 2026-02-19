@@ -6,6 +6,7 @@ data class Restaurant(
     val restaurantName: String? = null,
     val deliveryDuration: String? = null,
     val restaurantDeliveryDuration: String? = null,
+    val restaurantDeliveryRadius: String? = null,
     val restaurantOpeningTime: String? = null,
     val restaurantClosingTime: String? = null,
     val restaurantAddress: String? = null,

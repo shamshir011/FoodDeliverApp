@@ -111,33 +111,74 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun retrieveRestaurantItems(){
-        database = FirebaseDatabase.getInstance()
-        val foodRef: DatabaseReference = database.reference.child("Restaurant")
 
-        // Fetch data from data base
-        foodRef.addListenerForSingleValueEvent(object: ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                // Clear existing data before populating
-                restaurantItems.clear()
+//  *******************************  This function retrieving recommended for you data      *****************************
+//    private fun retrieveRestaurantItems(){
+//        database = FirebaseDatabase.getInstance()
+//        val foodRef: DatabaseReference = database.reference.child("Restaurant")
+//
+//        // Fetch data from data base
+//        foodRef.addListenerForSingleValueEvent(object: ValueEventListener{
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                // Clear existing data before populating
+//                restaurantItems.clear()
+//
+//                // loop for through each food item
+//                for(foodSnapshot in snapshot.children){
+//                    val categoryItem = foodSnapshot.getValue(Restaurant::class.java)
+//                    categoryItem?.let {
+//                        restaurantItems.add(it)
+//                    }
+//                    homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
+//                    homeFragmentBiding.recommendedRecyclerView.visibility = View.VISIBLE
+//                }
+//                restaurantSetAdapter()
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.d("DatabaseError", "Error: ${error.message}")
+//            }
+//        })
+//    }
 
-                // loop for through each food item
-                for(foodSnapshot in snapshot.children){
-                    val categoryItem = foodSnapshot.getValue(Restaurant::class.java)
-                    categoryItem?.let {
-                        restaurantItems.add(it)
-                    }
-                    homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
-                    homeFragmentBiding.recommendedRecyclerView.visibility = View.VISIBLE
+
+//    Its modified data 23:31
+//    This function retrieving recommended for you data
+    private fun retrieveRestaurantItems() {
+
+    database = FirebaseDatabase.getInstance()
+    val foodRef: DatabaseReference = database.reference.child("Restaurant")
+
+    foodRef.addListenerForSingleValueEvent(object : ValueEventListener {
+
+        override fun onDataChange(snapshot: DataSnapshot) {
+
+            restaurantItems.clear()
+
+            for (foodSnapshot in snapshot.children) {
+
+                val categoryItem =
+                    foodSnapshot.getValue(Restaurant::class.java)
+
+                // 🔥 THIS LINE IS THE MOST IMPORTANT FIX
+                categoryItem?.key = foodSnapshot.key
+
+                categoryItem?.let {
+                    restaurantItems.add(it)
                 }
-                restaurantSetAdapter()
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("DatabaseError", "Error: ${error.message}")
-            }
-        })
-    }
+            homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
+            homeFragmentBiding.recommendedRecyclerView.visibility = View.VISIBLE
+
+            restaurantSetAdapter()
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+            Log.d("DatabaseError", "Error: ${error.message}")
+        }
+    })
+}
 
 
 //    This is for banner recyclerview
@@ -146,15 +187,14 @@ private fun fetchRestaurants() {
         .getReference("Restaurant")
     restaurantRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
-        override fun onDataChange(snapshot: DataSnapshot) {
+        override fun onDataChange(snapshot: DataSnapshot){
 
             restaurantList.clear()
             foodMap.clear()
 
             for (restaurantSnap in snapshot.children) {
 
-                val restaurant =
-                    restaurantSnap.getValue(RestaurantModel::class.java)
+                val restaurant =  restaurantSnap.getValue(RestaurantModel::class.java)
 
                 restaurant?.key = restaurantSnap.key
 
@@ -162,6 +202,11 @@ private fun fetchRestaurants() {
                     restaurantList.add(restaurant)
                 }
             }
+
+            val count = restaurantList.size
+            homeFragmentBiding.textViewCountRestaurant.text =
+                if (count == 1) "$count"
+                else "$count"
 
             fetchFoodItemsForAllRestaurants()
         }
@@ -288,8 +333,6 @@ private fun setFoodCategoryAdapter(){
             }
         )
 
-//        homeFragmentBiding.recyclerViewCategory.adapter = foodCategoryAdapter
-
 
 
         homeFragmentBiding.recyclerViewCategory.layoutManager =
@@ -305,6 +348,25 @@ private fun restaurantSetAdapter() {
     homeFragmentBiding.recommendedRecyclerView.layoutManager = gridLayoutManager
     homeFragmentBiding.recommendedRecyclerView.adapter = restaurantRecommendedAdapter
     }
+
+//    Its modified code of the restaurant recommended for you
+//    private fun restaurantSetAdapter() {
+//
+//        if (!::restaurantRecommendedAdapter.isInitialized) {
+//
+//            restaurantRecommendedAdapter =
+//                RestaurantRecommendedAdapter(requireContext(), restaurantItems)
+//
+//            homeFragmentBiding.recommendedRecyclerView.layoutManager =
+//                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//
+//            homeFragmentBiding.recommendedRecyclerView.adapter =
+//                restaurantRecommendedAdapter
+//
+//        } else {
+//            restaurantRecommendedAdapter.notifyDataSetChanged()
+//        }
+//    }
 
     private fun setupRecyclerView() {
 
@@ -367,29 +429,6 @@ private fun restaurantSetAdapter() {
         newList.add(CategoryItem.Food(selectedItem))
 
         newList.add(CategoryItem.ViewAll)
-
-
-        // Update RecyclerView manually
-//        homeFragmentBiding.recyclerViewCategory.adapter =
-//            FoodCategoryAdapter(
-//                newList,
-//                onCategoryClick = { category ->
-//                    val name = category.foodCategoryName ?: return@FoodCategoryAdapter
-//                    highlightSelectedCategory(name)
-//
-//                    if (name == "All") {
-//                        fetchRestaurants()
-//                        retrieveRestaurantItems()
-//                    } else {
-//                        loadRestaurantsByCategory(name)
-//                    }
-//                },
-//                onViewAllClick = {
-//                    openBottomSheet()
-//                }
-//            )
-
-
 
         foodCategoryAdapter = FoodCategoryAdapter(
             newList,

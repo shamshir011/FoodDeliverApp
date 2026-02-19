@@ -100,8 +100,7 @@ fun bind(category: FoodCategory) {
         onCategoryClick(category)
     }
 }
-
-    }
+}
 
     inner class ViewAllViewHolder(
         private val binding: ViewAllLayoutDesignBinding

@@ -154,12 +154,12 @@
                 app:layout_constraintTop_toTopOf="@+id/recommendedRecyclerView" />
 
             <TextView
-                android:id="@+id/textView34"
+                android:id="@+id/textViewCountRestaurant"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="15"
+                android:text="@string/_0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recommendedRecyclerView" />
 
@@ -168,18 +168,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="RESTAURANTS DELIVERING TO YOU"
-                app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                app:layout_constraintStart_toEndOf="@+id/textView34"
-                app:layout_constraintTop_toTopOf="@+id/textView34" />
+                android:text="@string/restaurants_delivering_to_you"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewCountRestaurant"
+                app:layout_constraintStart_toEndOf="@+id/textViewCountRestaurant"
+                app:layout_constraintTop_toTopOf="@+id/textViewCountRestaurant" />
 
             <TextView
                 android:id="@+id/textView37"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Featured"
-                app:layout_constraintStart_toStartOf="@+id/textView34"
-                app:layout_constraintTop_toBottomOf="@+id/textView34" />
+                app:layout_constraintStart_toStartOf="@+id/textViewCountRestaurant"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCountRestaurant" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/bannerRecyclerviewId"

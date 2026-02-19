@@ -72,4 +72,7 @@ the main programming languages.XML is used" </string>
     <string name="_0">0</string>
     <string name="restaurants_delivering_to_you">RESTAURANTS DELIVERING TO YOU</string>
     <string name="_20_25">20-25</string>
+    <string name="mins">mins</string>
+    <string name="_0km">0km</string>
+    <string name="pipe">|</string>
 </resources>

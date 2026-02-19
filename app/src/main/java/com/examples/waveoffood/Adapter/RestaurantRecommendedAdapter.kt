@@ -45,12 +45,6 @@ class RestaurantRecommendedAdapter(
                 Glide.with(context).load(uri).into(imageViewRestaurant)
             }
 
-//            binding.root.setOnClickListener {
-//                val intent = Intent(context, RestaurantItemActivity::class.java)
-//                intent.putExtra("restaurantId", restaurantItem.key)
-//                context.startActivity(intent)
-//            }
-
             binding.root.setOnClickListener {
 
                 Log.d("CLICK_DEBUG", "Clicked Key = ${restaurantItem.key}")

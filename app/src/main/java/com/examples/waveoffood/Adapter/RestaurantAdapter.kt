@@ -1,5 +1,6 @@
 package com.examples.waveoffood.Adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.examples.waveoffood.Model.FoodItemModel
 import com.examples.waveoffood.Model.RestaurantModel
 import android.os.Handler
 import android.os.Looper
+import com.examples.waveoffood.RestaurantItemActivity
 
 class RestaurantAdapter(
     private val restaurantList: MutableList<RestaurantModel>,
@@ -39,7 +41,7 @@ class RestaurantAdapter(
         holder.binding.textView44.text = restaurant.restaurantDeliveryRadius
 
 
-//    *************************************    Modified code for the viewpager      *****************************
+//    *************************************    code for  viewpager      *****************************
         val foodList = foodMap[restaurant.key] ?: emptyList()
 
         val bannerAdapter = BannerSliderAdapter(foodList)
@@ -65,15 +67,15 @@ class RestaurantAdapter(
                 }
             }, 3000)
         }
-
-
-        // 🔥 Now set ViewPager for this restaurant
-//        val foodList = foodMap[restaurant.key] ?: emptyList()
-//
-//        val bannerAdapter = BannerSliderAdapter(foodList)
-//        holder.binding.bannerViewPager.adapter = bannerAdapter
-//
-//        holder.binding.dotsIndicator.attachTo(holder.binding.bannerViewPager)
+        holder.binding.root.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, RestaurantItemActivity::class.java)
+            intent.putExtra("restaurantId", restaurant.key)
+            intent.putExtra("restaurantName",restaurant.restaurantName)
+            intent.putExtra("restaurantDistance",restaurant.restaurantDeliveryRadius)
+            intent.putExtra("restaurantDeliveryDuration",restaurant.restaurantDeliveryDuration)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = restaurantList.size

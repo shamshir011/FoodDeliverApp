@@ -75,4 +75,10 @@ the main programming languages.XML is used" </string>
     <string name="mins">mins</string>
     <string name="_0km">0km</string>
     <string name="pipe">|</string>
+    <string name="add_payment_method">Add Payment Method</string>
+    <string name="bill_total">Bill total: ₹</string>
+    <string name="_104_26">104.26</string>
+    <string name="enter_upi_id">Enter UPI ID</string>
+    <string name="enter_your_upi_id">Enter your UPI ID</string>
+    <string name="pay_now">Pay Now</string>
 </resources>

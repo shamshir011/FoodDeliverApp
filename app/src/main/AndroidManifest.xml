@@ -16,6 +16,9 @@
         android:theme="@style/Theme.WaveOfFood"
         tools:targetApi="31">
         <activity
+            android:name="com.examples.waveoffood.PaymentMethodActivity"
+            android:exported="false" />
+        <activity
             android:name="com.examples.waveoffood.RestaurantItemActivity"
             android:exported="false" />
         <activity

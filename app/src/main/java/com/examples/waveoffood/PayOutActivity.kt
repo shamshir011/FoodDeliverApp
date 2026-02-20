@@ -28,7 +28,6 @@ class PayOutActivity : AppCompatActivity() {
     private lateinit var foodItemPrice: ArrayList<String>
     private lateinit var foodItemImage: ArrayList<String>
     private lateinit var foodItemDescription: ArrayList<String>
-    private lateinit var foodItemIngredient: ArrayList<String>
     private lateinit var foodItemQuantities: ArrayList<Int>
     private lateinit var databaseReference: DatabaseReference
     private lateinit var userId: String
@@ -51,7 +50,6 @@ class PayOutActivity : AppCompatActivity() {
         foodItemPrice = intent.getStringArrayListExtra("FoodItemPrice") as ArrayList<String>
         foodItemImage = intent.getStringArrayListExtra("FoodItemImage") as ArrayList<String>
         foodItemDescription = intent.getStringArrayListExtra("FoodItemDescription") as ArrayList<String>
-        foodItemIngredient = intent.getStringArrayListExtra("FoodItemIngredient") as ArrayList<String>
         foodItemQuantities = intent.getIntegerArrayListExtra("FoodItemQuantities") as ArrayList<Int>
 
         totalAmount = calculateTotalAmount().toString() +"₹"

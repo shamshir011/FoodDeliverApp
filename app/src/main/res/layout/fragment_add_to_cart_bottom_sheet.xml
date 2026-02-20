@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clipToPadding="false"
     android:background="@drawable/cuisines_dishes_bottom_sheep_background"
     tools:context="com.examples.waveoffood.Fragment.AddToCartBottomSheetFragment">
 
@@ -45,6 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
         <LinearLayout
+            android:id="@+id/addItem"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"

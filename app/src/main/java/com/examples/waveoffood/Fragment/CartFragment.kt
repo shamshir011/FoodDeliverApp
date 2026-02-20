@@ -82,14 +82,6 @@ class CartFragment : Fragment() {
         })
     }
 
-//    private fun setAdapter() {
-//        cartAdapter = CardAdapter(requireContext(), cartItemsList)   // pass the shared list
-//        binding.cartRecyclerView.apply {
-//            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-//            adapter = cartAdapter
-//        }
-//    }
-
     private fun setAdapter() {
         cartAdapter = CardAdapter(requireContext(), cartItemsList)   // now matches!
         binding.cartRecyclerView.apply {
@@ -104,10 +96,9 @@ class CartFragment : Fragment() {
         val foodPrice = cartItemsList.mapNotNull { it.foodPrice }.toMutableList()
         val foodDescription = cartItemsList.mapNotNull { it.foodDescription }.toMutableList()
         val foodImage = cartItemsList.mapNotNull { it.foodImage }.toMutableList()
-        val foodIngredient = cartItemsList.mapNotNull { it.foodIngredient }.toMutableList()
         val foodQuantities = cartAdapter.getUpdatedItemsQuantities()   // still works
 
-        orderNow(foodName, foodPrice, foodDescription, foodImage, foodIngredient, foodQuantities)
+        orderNow(foodName, foodPrice, foodDescription, foodImage, foodQuantities)
     }
 
     private fun orderNow(
@@ -115,7 +106,6 @@ class CartFragment : Fragment() {
         foodPrice: MutableList<String>,
         foodDescription: MutableList<String>,
         foodImage: MutableList<String>,
-        foodIngredient: MutableList<String>,
         foodQuantities: MutableList<Int>
     ) {
         if (!isAdded || context == null) return
@@ -125,7 +115,6 @@ class CartFragment : Fragment() {
             putExtra("FoodItemPrice", foodPrice as ArrayList<String>)
             putExtra("FoodItemImage", foodImage as ArrayList<String>)
             putExtra("FoodItemDescription", foodDescription as ArrayList<String>)
-            putExtra("FoodItemIngredient", foodIngredient as ArrayList<String>)
             putExtra("FoodItemQuantities", foodQuantities as ArrayList<Int>)
         }
         startActivity(intent)

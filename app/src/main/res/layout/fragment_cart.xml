@@ -39,10 +39,9 @@
         android:layout_marginBottom="65dp"
         android:foreground="?attr/selectableItemBackground"
         android:background="@drawable/proceed_button_shape"
-        android:fontFamily="@font/yeon_sung"
         android:text="Proceed"
         android:textAllCaps="false"
-        android:textColor="@color/textColor"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

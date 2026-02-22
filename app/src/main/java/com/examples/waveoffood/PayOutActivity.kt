@@ -31,6 +31,7 @@ class PayOutActivity : AppCompatActivity() {
     private lateinit var foodItemQuantities: ArrayList<Int>
     private lateinit var databaseReference: DatabaseReference
     private lateinit var userId: String
+    private lateinit var restaurantId: String
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -77,7 +78,7 @@ class PayOutActivity : AppCompatActivity() {
         userId = auth.currentUser?.uid?:""
         val time = System.currentTimeMillis()
         val itemPushKey = databaseReference.child("OrderDetails").push().key
-        val orderDetails = OrderDetails(userId, name, foodItemName,foodItemPrice,foodItemImage,foodItemQuantities, address,totalAmount, phone,time,itemPushKey , false,false)
+        val orderDetails = OrderDetails(userId, restaurantId, name, foodItemName,foodItemPrice,foodItemImage,foodItemQuantities, address,totalAmount, phone,time,itemPushKey , false,false)
         val orderReference = databaseReference.child("OrderDetails").child(itemPushKey!!)
         orderReference.setValue(orderDetails).addOnSuccessListener{
             val bottomSheetDialog = ConratsBottomSheetFragment()

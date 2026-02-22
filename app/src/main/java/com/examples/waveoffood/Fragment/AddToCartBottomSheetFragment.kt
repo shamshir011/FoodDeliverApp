@@ -21,6 +21,7 @@ class AddToCartBottomSheetFragment : BottomSheetDialogFragment() {
     private var foodImage: String? = null
     private var foodDescription: String? = null
     private var foodPrice: String? = null
+    private var restaurantId: String? = null
     private lateinit var auth: FirebaseAuth
     companion object {
 
@@ -34,6 +35,7 @@ class AddToCartBottomSheetFragment : BottomSheetDialogFragment() {
             bundle.putString("name", foodItem.title)
             bundle.putString("price", foodItem.price)
             bundle.putString("description", foodItem.description)
+            bundle.putString("restaurantId", foodItem.restaurantId)  //New added
 
             fragment.arguments = bundle
 
@@ -55,7 +57,7 @@ class AddToCartBottomSheetFragment : BottomSheetDialogFragment() {
         foodName = arguments?.getString("name")
         foodPrice = arguments?.getString("price")
         foodDescription = arguments?.getString("description")
-
+        restaurantId = arguments?.getString("restaurantId")  //New added
         binding.textViewTitle.text = foodName
         binding.textViewRupees.text = foodPrice
         binding.textViewBottomDescription.text = foodDescription
@@ -81,7 +83,8 @@ class AddToCartBottomSheetFragment : BottomSheetDialogFragment() {
             foodPrice = foodPrice,
             foodDescription = foodDescription,
             foodImage = foodImage,
-            foodQuantity = 1
+            foodQuantity = 1,
+            restaurantId = restaurantId
         )
 
         database.child("user").child(userId).child("CartItems").push()

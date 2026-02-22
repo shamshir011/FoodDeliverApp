@@ -17,8 +17,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-//This code from Grok ai
-
 class CardAdapter(
     private val context: Context,
     private val cartItems: MutableList<CartItems>   // ← only this list
@@ -44,6 +42,10 @@ class CardAdapter(
         itemQuantities = IntArray(cartItems.size) { i ->
             cartItems[i].foodQuantity ?: 1
         }
+    }
+
+    fun getRestaurantIds(): MutableList<String> {
+        return cartItems.mapNotNull { it.restaurantId }.toMutableList()
     }
 
     // Call this after delete or any list change

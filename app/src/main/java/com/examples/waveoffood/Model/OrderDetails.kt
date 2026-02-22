@@ -6,6 +6,7 @@ import java.io.Serializable
 
 class OrderDetails(): Serializable{
     var userUid: String? = null
+    var restaurantId: String? = null  //New Added
     var userName: String? = null
     var foodNames: MutableList<String>? = null
     var foodImages: MutableList<String>? = null
@@ -21,6 +22,7 @@ class OrderDetails(): Serializable{
 
       constructor(parcel: Parcel) : this(){
           userUid = parcel.readString()
+          restaurantId = parcel.readString()
           userName = parcel.readString()
           address = parcel.readString()
           totalPrice = parcel.readString()
@@ -32,6 +34,7 @@ class OrderDetails(): Serializable{
       }
     constructor(
         userId: String,
+        restaurantId: String, //New Added
         name: String,
         foodItemName: ArrayList<String>,
         foodItemPrice: ArrayList<String>,
@@ -46,6 +49,7 @@ class OrderDetails(): Serializable{
         b1: Boolean
     ):this(){
         this.userUid = userId
+        this.restaurantId = restaurantId
         this.userName = name
         this.foodNames = foodItemName
         this.foodPrices = foodItemPrice
@@ -62,12 +66,13 @@ class OrderDetails(): Serializable{
 
        fun writeToParcel(parcel: Parcel, flags: Int){
           parcel.writeString(userUid)
+           parcel.writeString(restaurantId)
           parcel.writeString(userName)
           parcel.writeString(address)
           parcel.writeString(totalPrice)
           parcel.writeString(phoneNumber)
           parcel.writeByte(if(orderAccepted) 1 else 0)
-          parcel.writeByte(if(orderAccepted) 1 else 0)
+          parcel.writeByte(if(paymentReceived) 1 else 0)
           parcel.writeString(itemPushKey)
           parcel.writeLong(currentTime)
       }

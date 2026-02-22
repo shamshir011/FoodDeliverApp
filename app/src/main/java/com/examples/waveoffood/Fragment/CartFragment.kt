@@ -12,6 +12,7 @@ import com.example.waveoffood.databinding.FragmentCartBinding
 import com.examples.waveoffood.Adapter.CardAdapter
 import com.examples.waveoffood.Model.CartItems
 import com.examples.waveoffood.PayOutActivity
+import com.examples.waveoffood.PaymentMethodActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -41,14 +42,13 @@ class CartFragment : Fragment() {
 
         retrieveCartItems()
 
-        binding.proceedButton.setOnClickListener{
+        binding.payNowButton.setOnClickListener{
             if (cartAdapter.itemCount == 0) {
                 Toast.makeText(requireContext(), "Your cart is empty", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             getOrderItemsDetails()
         }
-
         return binding.root
     }
 
@@ -95,26 +95,71 @@ class CartFragment : Fragment() {
         val foodImage = cartItemsList.mapNotNull { it.foodImage }.toMutableList()
         val foodQuantities = cartAdapter.getUpdatedItemsQuantities()   // still works
 
-        orderNow(foodName, foodPrice, foodDescription, foodImage, foodQuantities)
+        val restaurantId = cartItemsList.firstOrNull()?.restaurantId ?: ""
+
+        orderNow(foodName, foodPrice, foodDescription, foodImage, foodQuantities, restaurantId)
     }
 
-    private fun orderNow(
-        foodName: MutableList<String>,
-        foodPrice: MutableList<String>,
-        foodDescription: MutableList<String>,
-        foodImage: MutableList<String>,
-        foodQuantities: MutableList<Int>
-    ) {
-        if (!isAdded || context == null) return
+//    private fun orderNow(
+//        foodName: MutableList<String>,
+//        foodPrice: MutableList<String>,
+//        foodDescription: MutableList<String>,
+//        foodImage: MutableList<String>,
+//        foodQuantities: MutableList<Int>
+//    ) {
+//        if (!isAdded || context == null) return
+//
+//        val intent = Intent(requireContext(), PaymentMethodActivity::class.java).apply {
+//            putExtra("FoodItemName", foodName as ArrayList<String>)
+//            putExtra("FoodItemPrice", foodPrice as ArrayList<String>)
+//            putExtra("FoodItemImage", foodImage as ArrayList<String>)
+//            putExtra("FoodItemDescription", foodDescription as ArrayList<String>)
+//            putExtra("FoodItemQuantities", foodQuantities as ArrayList<Int>)
+//        }
+//        startActivity(intent)
+//    }
 
-        val intent = Intent(requireContext(), PayOutActivity::class.java).apply {
-            putExtra("FoodItemName", foodName as ArrayList<String>)
-            putExtra("FoodItemPrice", foodPrice as ArrayList<String>)
-            putExtra("FoodItemImage", foodImage as ArrayList<String>)
-            putExtra("FoodItemDescription", foodDescription as ArrayList<String>)
-            putExtra("FoodItemQuantities", foodQuantities as ArrayList<Int>)
+   //*********************************************     New Added       ********************************************
+   private fun orderNow(
+       foodName: MutableList<String>,
+       foodPrice: MutableList<String>,
+       foodDescription: MutableList<String>,
+       foodImage: MutableList<String>,
+       foodQuantities: MutableList<Int>,
+       restaurantId: String
+   ) {
+
+       val totalAmount = calculateTotalAmount()
+
+       val intent = Intent(requireContext(), PaymentMethodActivity::class.java).apply {
+
+           putStringArrayListExtra("FoodItemName", ArrayList(foodName))
+           putStringArrayListExtra("FoodItemPrice", ArrayList(foodPrice))
+           putStringArrayListExtra("FoodItemImage", ArrayList(foodImage))
+           putStringArrayListExtra("FoodItemDescription", ArrayList(foodDescription))
+           putIntegerArrayListExtra("FoodItemQuantities", ArrayList(foodQuantities))
+
+           putExtra("restaurantId", restaurantId)
+           putExtra("totalAmount", totalAmount)
+       }
+
+       startActivity(intent)
+   }
+
+
+    private fun calculateTotalAmount(): String {
+
+        var total = 0
+
+        for (item in cartItemsList) {
+
+            val price = item.foodPrice?.toIntOrNull() ?: 0
+            val quantity = item.foodQuantity ?: 1
+
+            total += price * quantity
         }
-        startActivity(intent)
+
+        return total.toString()
     }
 
     override fun onDestroyView() {

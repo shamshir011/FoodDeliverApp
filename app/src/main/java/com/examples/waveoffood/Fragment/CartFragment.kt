@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.waveoffood.R
 import com.example.waveoffood.databinding.FragmentCartBinding
 import com.examples.waveoffood.Adapter.CardAdapter
 import com.examples.waveoffood.Model.CartItems
@@ -16,10 +15,8 @@ import com.examples.waveoffood.PayOutActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.getValue
 
 class CartFragment : Fragment() {
 
@@ -44,7 +41,7 @@ class CartFragment : Fragment() {
 
         retrieveCartItems()
 
-        binding.proceedButton.setOnClickListener {
+        binding.proceedButton.setOnClickListener{
             if (cartAdapter.itemCount == 0) {
                 Toast.makeText(requireContext(), "Your cart is empty", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener

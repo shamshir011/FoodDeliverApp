@@ -7,15 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.waveoffood.databinding.BuyAgainItemBinding
+import com.examples.waveoffood.Model.OrderDetails
 
 
 class BuyAgainAdapter(
-    private val buyAgainFoodName: MutableList<String>,
-    private val buyAgainFoodPrice: MutableList<String>,
-    private val buyAgainFoodImage: MutableList<String>,
-    private var requireContext: Context
-) : RecyclerView.Adapter<BuyAgainAdapter.BuyAgainViewHolder>() {
-
+    private val orderList: List<OrderDetails>,
+    private val context: Context
+) : RecyclerView.Adapter<BuyAgainAdapter.BuyAgainViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuyAgainViewHolder {
         val binding =
@@ -24,27 +22,28 @@ class BuyAgainAdapter(
     }
 
     override fun onBindViewHolder(holder: BuyAgainViewHolder, position: Int) {
-        holder.bind(
-            buyAgainFoodName[position],
-            buyAgainFoodPrice[position],
-            buyAgainFoodImage[position]
-        )
+        holder.bind(orderList[position])
     }
 
     override fun getItemCount(): Int{
-        return buyAgainFoodName.size
+        return orderList.size
     }
 
     inner class BuyAgainViewHolder(private val binding: BuyAgainItemBinding) :
-        RecyclerView.ViewHolder(binding.root){
-        fun bind(foodName: String, foodPrice: String, foodImage: String){
-            binding.apply{
-                binding.buyAgainFoodNameId.text = foodName
-                binding.buyAgainFoodPriceId.text = foodPrice
-                val uriString = foodImage
-                val uri = Uri.parse(uriString)
-                Glide.with(requireContext).load(uri).into(binding.buyAgainImageId)
-            }
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(order: OrderDetails) {
+
+            binding.textViewFoodName.text = order.foodNames?.get(0)
+            val quantity = order.foodQuantities?.firstOrNull() ?: 0
+            binding.textViewQuantity.text = quantity.toString()
+            binding.textViewItemPrice.text = order.foodPrices?.get(0)
+
+            val imageUri = order.foodImages?.get(0)
+
+            Glide.with(context)
+                .load(imageUri)
+                .into(binding.imageViewOrderFoodImage)
         }
     }
 

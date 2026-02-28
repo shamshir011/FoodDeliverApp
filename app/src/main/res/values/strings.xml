@@ -83,5 +83,8 @@ the main programming languages.XML is used" </string>
     <string name="pay_now">Pay Now</string>
     <string name="continueToHome">Continue</string>
     <string name="your_orders">Your Orders</string>
+    <string name="order_tracking">Order Tracking</string>
+    <string name="comment">It seems lake you haven\'t \n placed any orders yet.</string>
+    <string name="no_orders_yet">No Orders Yet</string>
 
 </resources>

@@ -48,15 +48,14 @@
         app:lottie_rawRes="@raw/success" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/goHome"
+        android:id="@+id/continueToHome"
         android:layout_width="357dp"
         android:layout_height="57dp"
         android:layout_gravity="center"
         android:layout_marginBottom="32dp"
         android:background="@drawable/go_home_shape"
-        android:fontFamily="@font/yeon_sung"
         android:foreground="?attr/selectableItemBackground"
-        android:text="@string/dismiss"
+        android:text="@string/continueToHome"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"

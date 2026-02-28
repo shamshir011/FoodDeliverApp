@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase
 
 class AddToCartBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentAddToCartBottomSheetBinding
-
     private var foodName: String? = null
     private var foodImage: String? = null
     private var foodDescription: String? = null
@@ -38,10 +37,6 @@ class AddToCartBottomSheetFragment : BottomSheetDialogFragment() {
             bundle.putString("restaurantId", foodItem.restaurantId)  //New added
 
             fragment.arguments = bundle
-
-
-
-
             return fragment
         }
     }

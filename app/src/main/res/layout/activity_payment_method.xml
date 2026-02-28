@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -111,13 +112,13 @@
                     android:id="@+id/editUpi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._"
                     android:fontFamily="@font/lato"
                     android:hint="@string/enter_your_upi_id"
-                    android:paddingStart="12dp"
-                    android:textSize="16sp"
                     android:inputType="textEmailAddress"
                     android:maxLength="50"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._"/>
+                    android:paddingStart="12dp"
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </com.google.android.material.card.MaterialCardView>

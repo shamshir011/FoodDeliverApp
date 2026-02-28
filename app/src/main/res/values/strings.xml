@@ -81,4 +81,7 @@ the main programming languages.XML is used" </string>
     <string name="enter_upi_id">Enter UPI ID</string>
     <string name="enter_your_upi_id">Enter your UPI ID</string>
     <string name="pay_now">Pay Now</string>
+    <string name="continueToHome">Continue</string>
+    <string name="your_orders">Your Orders</string>
+
 </resources>

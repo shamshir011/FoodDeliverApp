@@ -112,21 +112,64 @@ class PaymentMethodActivity : AppCompatActivity() {
     }
 
     private fun placeOrder(){
-        userId = auth.currentUser?.uid?:""
-        val time = System.currentTimeMillis()
-        val itemPushKey = databaseReference.child("OrderDetails").push().key
-        val orderDetails = OrderDetails(userId, restaurantId, name, foodItemName,foodItemPrice,foodItemImage,foodItemQuantities, address,totalAmount, phone,time,itemPushKey , false,false)
-        val orderReference = databaseReference.child("OrderDetails").child(itemPushKey!!)
-        orderReference.setValue(orderDetails).addOnSuccessListener{
 
-            removeItemFromCart()
-            addOrderToHistory(orderDetails)
-            val intent = Intent(this, PaymentCompletedActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-            .addOnFailureListener{
-                Toast.makeText(this, "Failed to order", Toast.LENGTH_SHORT).show()
+        userId = auth.currentUser?.uid ?: ""
+        val time = System.currentTimeMillis()
+
+        val itemPushKey = databaseReference
+            .child("OrderDetails")
+            .push()
+            .key ?: return
+
+        val orderDetails = OrderDetails(
+            userId,
+            restaurantId,
+            name,
+            foodItemName,
+            foodItemPrice,
+            foodItemImage,
+            foodItemQuantities,
+            address,
+            totalAmount,
+            phone,
+            time,
+            itemPushKey,
+            false,  // 🔥 orderAccepted = false (pending)
+            true   // paymentReceived = true
+        )
+        // ✅ 1. Save in global order list
+        databaseReference.child("OrderDetails")
+            .child(itemPushKey)
+            .setValue(orderDetails)
+
+        // ✅ 2. Save in user history
+        databaseReference.child("user")
+            .child(userId)
+            .child("BuyHistory")
+            .child(itemPushKey)
+            .setValue(orderDetails)
+
+        // ✅ 3. MOST IMPORTANT → Save in restaurant node
+        databaseReference.child("restaurantOrders")
+            .child(restaurantId)
+            .child(itemPushKey)
+            .setValue(orderDetails)
+            .addOnSuccessListener {
+
+                removeItemFromCart()
+
+                val intent = Intent(this, PaymentCompletedActivity::class.java)
+                startActivity(intent)
+
+                finish()
+            }
+            .addOnFailureListener {
+
+                Toast.makeText(
+                    this,
+                    "Order failed to send to restaurant",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
@@ -143,20 +186,41 @@ class PaymentMethodActivity : AppCompatActivity() {
         cartItemsReference.removeValue()
     }
 
-    private fun calculateTotalAmount(): Int{
+//    private fun calculateTotalAmount(): Int{
+//        var totalAmount = 0
+//        for(i in 0 until foodItemPrice.size){
+//            var price = foodItemPrice[i]
+//            val lastChar = price.last()
+//            val priceIntValue = if(lastChar == '₹'){
+//                price.dropLast(1).toInt()
+//            }
+//            else{
+//                price.toInt()
+//            }
+//            var quantity = foodItemQuantities[i]
+//            totalAmount += priceIntValue * quantity
+//        }
+//        return totalAmount
+//    }
+
+//    Updated code
+    private fun calculateTotalAmount(): Int {
+
         var totalAmount = 0
-        for(i in 0 until foodItemPrice.size){
-            var price = foodItemPrice[i]
-            val lastChar = price.last()
-            val priceIntValue = if(lastChar == '₹'){
-                price.dropLast(1).toInt()
-            }
-            else{
-                price.toInt()
-            }
-            var quantity = foodItemQuantities[i]
+
+        for (i in foodItemPrice.indices) {
+
+            val cleanPrice = foodItemPrice[i]
+                .replace("₹", "")   // remove ₹
+                .trim()             // remove spaces
+
+            val priceIntValue = cleanPrice.toInt()
+
+            val quantity = foodItemQuantities[i]
+
             totalAmount += priceIntValue * quantity
         }
+
         return totalAmount
     }
 
@@ -185,13 +249,10 @@ class PaymentMethodActivity : AppCompatActivity() {
         binding.payNowButton.text = "Processing..."
 
         Handler(Looper.getMainLooper()).postDelayed({
-            // Restore button state
-            binding.payNowButton.isEnabled = true
-            binding.payNowButton.text = "Pay Now"
 
             placeOrder()
 
-        }, 2000)
+        }, 3000)
     }
 
 

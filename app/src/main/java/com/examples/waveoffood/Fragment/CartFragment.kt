@@ -142,7 +142,6 @@ class CartFragment : Fragment() {
            putExtra("restaurantId", restaurantId)
            putExtra("totalAmount", totalAmount)
        }
-
        startActivity(intent)
    }
 

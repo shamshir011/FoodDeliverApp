@@ -86,5 +86,7 @@ the main programming languages.XML is used" </string>
     <string name="order_tracking">Order Tracking</string>
     <string name="comment">It seems lake you haven\'t \n placed any orders yet.</string>
     <string name="no_orders_yet">No Orders Yet</string>
+    <string name="order">Order</string>
+    <string name="waiting_for_confirmation">Waiting for confirmation...</string>
 
 </resources>

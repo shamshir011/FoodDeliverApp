@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.waveoffood.R
 import com.example.waveoffood.databinding.FragmentProfileBinding
+import com.examples.waveoffood.LoginActivity
 import com.examples.waveoffood.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -50,6 +51,13 @@ class ProfileFragment : Fragment(){
             val phone = binding.phone.text.toString()
 
             updateUserData(name, email, address, phone)
+        }
+
+        binding.cardViewLogout.setOnClickListener {
+            auth.signOut()
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
 
         return binding.root

@@ -9,8 +9,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.waveoffood.R
 import com.example.waveoffood.databinding.FragmentHistoryBinding
 import com.examples.waveoffood.Adapter.BuyAgainAdapter
 import com.examples.waveoffood.Model.OrderDetails
@@ -43,50 +46,77 @@ class HistoryFragment : Fragment(){
 
         orderList = ArrayList()
 
-        adapter = BuyAgainAdapter(orderList, requireContext())
-
-        orderBinding.orderRecyclerViewId.layoutManager =
-            LinearLayoutManager(requireContext())
-        orderBinding.orderRecyclerViewId.adapter = adapter
-
-        listenOrders()
+//        adapter = BuyAgainAdapter(orderList, requireContext())
+//
+//        orderBinding.orderRecyclerViewId.layoutManager =
+//            LinearLayoutManager(requireContext())
+//        orderBinding.orderRecyclerViewId.adapter = adapter
+//
+//        listenOrders()
+//        listenForOrderUpdates()
 
         return orderBinding.root
     }
 
-    private fun listenOrders() {
+//    private fun listenOrders() {
+//
+//        val currentUserId = auth.currentUser?.uid ?: return
+//
+//        databaseReference.child("OrderDetails")
+//            .addValueEventListener(object : ValueEventListener {
+//
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                    orderList.clear()
+//
+//                    for (orderSnapshot in snapshot.children) {
+//                        val order =
+//                            orderSnapshot.getValue(OrderDetails::class.java)
+//
+//                        if (order != null && order.userUid == currentUserId) {
+//                            orderList.add(order)
+//                        }
+//                    }
+//
+//                    val isEmpty = orderList.isEmpty()
+//
+//                    orderBinding.emptyOrderLayout.root.visibility =
+//                        if (isEmpty) View.VISIBLE else View.GONE
+//
+//                    orderBinding.orderLayout.visibility =
+//                        if (isEmpty) View.GONE else View.VISIBLE
+//
+//                    adapter.notifyDataSetChanged()
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {}
+//            })
+//    }
 
-        val currentUserId = auth.currentUser?.uid ?: return
 
-        databaseReference.child("OrderDetails")
-            .addValueEventListener(object : ValueEventListener {
-
-                override fun onDataChange(snapshot: DataSnapshot) {
-
-                    orderList.clear()
-
-                    for (orderSnapshot in snapshot.children) {
-                        val order =
-                            orderSnapshot.getValue(OrderDetails::class.java)
-
-                        if (order != null && order.userUid == currentUserId) {
-                            orderList.add(order)
-                        }
-                    }
-
-                    val isEmpty = orderList.isEmpty()
-
-                    orderBinding.emptyOrderLayout.root.visibility =
-                        if (isEmpty) View.VISIBLE else View.GONE
-
-                    orderBinding.orderLayout.visibility =
-                        if (isEmpty) View.GONE else View.VISIBLE
-
-                    adapter.notifyDataSetChanged()
-                }
-
-                override fun onCancelled(error: DatabaseError) {}
-            })
-    }
+//    private fun listenForOrderUpdates(orderId: String, restaurantId: String) {
+//
+//        FirebaseDatabase.getInstance().reference
+//            .child("restaurantOrders")
+//            .child(restaurantId)
+//            .child(orderId)
+//            .addValueEventListener(object : ValueEventListener {
+//
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//
+//                    val order = snapshot.getValue(OrderDetails::class.java)
+//
+//                    if (order != null && order.orderAccepted == true) {
+//                        orderBinding.textViewConfirmation.text = "Your order has been accepted!"
+//                        orderBinding.textViewConfirmation.setTextColor(Color.GREEN)
+//                        orderBinding.cardViewConfirmation.setBackgroundColor(
+//                            ContextCompat.getColor(requireContext(), R.color.lowGreen)
+//                        )
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {}
+//            })
+//    }
 
 }

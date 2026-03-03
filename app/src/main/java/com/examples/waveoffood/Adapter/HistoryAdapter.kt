@@ -1,7 +1,6 @@
 package com.examples.waveoffood.Adapter
 
 import android.content.Context
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,10 +9,10 @@ import com.example.waveoffood.databinding.BuyAgainItemBinding
 import com.examples.waveoffood.Model.OrderDetails
 
 
-class BuyAgainAdapter(
+class HistoryAdapter(
     private val orderList: List<OrderDetails>,
     private val context: Context
-) : RecyclerView.Adapter<BuyAgainAdapter.BuyAgainViewHolder>(){
+) : RecyclerView.Adapter<HistoryAdapter.BuyAgainViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuyAgainViewHolder {
         val binding =

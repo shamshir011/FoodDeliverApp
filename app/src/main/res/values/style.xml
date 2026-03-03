@@ -6,4 +6,9 @@
         <item name="cornerSize">16dp</item>
     </style>
 
+    <style name="RoundedImage1">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">7dp</item>
+    </style>
+
 </resources>

@@ -88,5 +88,8 @@ the main programming languages.XML is used" </string>
     <string name="no_orders_yet">No Orders Yet</string>
     <string name="order">Order</string>
     <string name="waiting_for_confirmation">Waiting for confirmation...</string>
+    <string name="delivery_favorite_food">Delivery Favorite Food</string>
+    <string name="food_delivery_app">Food Delivery App</string>
+    <string name="sign_up_with">Sign Up With</string>
 
 </resources>

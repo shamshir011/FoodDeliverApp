@@ -1,17 +1,9 @@
 package com.examples.waveoffood
 
-import android.media.Image
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.waveoffood.R
 import com.example.waveoffood.databinding.ActivityRecentOrderItemsBinding
-import com.examples.waveoffood.Adapter.RecentBuyAdapter
-import com.examples.waveoffood.Model.OrderDetails
 
 class RecentOrderItems : AppCompatActivity(){
 

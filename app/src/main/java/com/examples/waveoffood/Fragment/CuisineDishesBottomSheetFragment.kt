@@ -36,9 +36,6 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
 
         binding = FragmentCusineDishesBottomSheetBinding.inflate(layoutInflater, container, false)
 
-
-
-
         retrieveCuisineDishes()
 
         return binding.root

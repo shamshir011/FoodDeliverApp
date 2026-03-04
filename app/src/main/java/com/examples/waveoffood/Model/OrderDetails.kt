@@ -17,6 +17,7 @@ class OrderDetails(): Serializable{
     var phoneNumber: String? = null
     var orderAccepted: Boolean = false
     var paymentReceived: Boolean = false
+    var status: String? = "Pending"
     var itemPushKey: String? = null
     var currentTime: Long = 0
 
@@ -46,7 +47,8 @@ class OrderDetails(): Serializable{
         time: Long,
         itemPushKey: String?,
         b: Boolean,
-        b1: Boolean
+        b1: Boolean,
+        status: String
     ):this(){
         this.userUid = userId
         this.restaurantId = restaurantId
@@ -61,7 +63,8 @@ class OrderDetails(): Serializable{
         this.currentTime = time
         this.itemPushKey = itemPushKey
         this.orderAccepted = b                                           //orderAccepted
-        this.paymentReceived = b1                                         //paymentReceived
+        this.paymentReceived = b1                                       //paymentReceived
+        this.status = status
     }
 
        fun writeToParcel(parcel: Parcel, flags: Int){

@@ -78,7 +78,7 @@ class PayOutActivity : AppCompatActivity() {
         userId = auth.currentUser?.uid?:""
         val time = System.currentTimeMillis()
         val itemPushKey = databaseReference.child("OrderDetails").push().key
-        val orderDetails = OrderDetails(userId, restaurantId, name, foodItemName,foodItemPrice,foodItemImage,foodItemQuantities, address,totalAmount, phone,time,itemPushKey , false,false)
+        val orderDetails = OrderDetails(userId, restaurantId, name, foodItemName,foodItemPrice,foodItemImage,foodItemQuantities, address,totalAmount, phone,time,itemPushKey , false,false, "Pending")
         val orderReference = databaseReference.child("OrderDetails").child(itemPushKey!!)
         orderReference.setValue(orderDetails).addOnSuccessListener{
             val bottomSheetDialog = ConratsBottomSheetFragment()

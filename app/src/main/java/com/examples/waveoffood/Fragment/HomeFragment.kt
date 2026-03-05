@@ -33,15 +33,14 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import android.os.Handler
 import android.os.Looper
+import android.widget.SearchView
 
 
 class HomeFragment : Fragment() {
 
     private lateinit var  databaseReference: DatabaseReference
     private lateinit var homeFragmentBiding: FragmentHomeBinding
-
     private lateinit var database: FirebaseDatabase
-    private lateinit var menuItems: MutableList<MenuItem>
     private lateinit var foodCategories: MutableList<FoodCategory>
     private var restaurantItems: ArrayList<Restaurant> = ArrayList()
     private lateinit var restaurantRecommendedAdapter: RestaurantRecommendedAdapter
@@ -51,37 +50,24 @@ class HomeFragment : Fragment() {
 
     private val restaurantList = mutableListOf<RestaurantModel>()
     private val foodMap = mutableMapOf<String, List<FoodItemModel>>()
+    private val originalRecommendedList = mutableListOf<Restaurant>()
+    private val originalBannerList = mutableListOf<RestaurantModel>()
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         foodCategories = mutableListOf()
         // Inflate the layout for this fragment
         homeFragmentBiding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-        homeFragmentBiding.viewMenuId.setOnClickListener{
-            val bottomSheetDialog = MenuBottomSheetFragment()
-            bottomSheetDialog.show(parentFragmentManager, "Test")
-        }
-
-
-
         // Retrieve and display popular menu items
         retrieveFoodCategoryData()
         retrieveRestaurantItems()
         fetchRestaurants()
-
-//        retrieveAndDisplayPopularItem()
-
+        setupSearchView()
 
         return homeFragmentBiding.root
-
-
     }
-
 //    ********************  Retrieve food category data from database   ******************************
 
     private fun retrieveFoodCategoryData(){
@@ -134,6 +120,8 @@ class HomeFragment : Fragment() {
                     restaurantItems.add(it)
                 }
             }
+            originalRecommendedList.clear()
+            originalRecommendedList.addAll(restaurantItems)
 
             homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
             homeFragmentBiding.recommendedRecyclerView.visibility = View.VISIBLE
@@ -169,6 +157,8 @@ private fun fetchRestaurants() {
                     restaurantList.add(restaurant)
                 }
             }
+            originalBannerList.clear()
+            originalBannerList.addAll(restaurantList)
 
             val count = restaurantList.size
             homeFragmentBiding.textViewCountRestaurant.text =
@@ -325,9 +315,6 @@ private fun restaurantSetAdapter() {
     }
 
 
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
@@ -403,8 +390,6 @@ private fun restaurantSetAdapter() {
         highlightSelectedCategory(categoryName)
     }
 
-
-//    Now added
     private fun openBottomSheet() {
 
         val bottomSheet = CuisineDishesBottomSheetFragment()
@@ -425,8 +410,42 @@ private fun restaurantSetAdapter() {
         bottomSheet.show(parentFragmentManager, "BottomSheet")
     }
 
+
+//    Its for search restaurant
+    private fun setupSearchView() {
+        homeFragmentBiding.searchViewRestaurant.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean{
+                filterMenuItems(query?:"")
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean{
+                filterMenuItems(newText?: "")
+                return true
+            }
+        })
+    }
+    private fun filterMenuItems(query: String){
+
+        if (query.isEmpty()) {
+
+            restaurantRecommendedAdapter.updateList(originalRecommendedList, false)
+            restaurantAdapter.updateList(originalBannerList)
+            return
+        }
+
+        val filteredRecommended = originalRecommendedList.filter {
+            it.restaurantName?.contains(query, ignoreCase = true) == true
+        }
+
+        val filteredBanner = originalBannerList.filter {
+            it.restaurantName?.contains(query, ignoreCase = true) == true
+        }
+
+        restaurantRecommendedAdapter.updateList(filteredRecommended, true)
+        restaurantAdapter.updateList(filteredBanner)
+    }
+
     override fun onStart() {
         super.onStart()
-
     }
 }

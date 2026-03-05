@@ -37,12 +37,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/orderTrackingRecyclerViewId"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView56"
+            app:layout_constraintTop_toBottomOf="@+id/textView28"
             tools:listitem="@layout/buy_again_item" />
 
         <TextView
@@ -57,7 +57,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
         <TextView
-            android:id="@+id/textView55"
+            android:id="@+id/textViewOrderId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#12345"
@@ -65,23 +65,14 @@
             app:layout_constraintStart_toEndOf="@+id/textView28"
             app:layout_constraintTop_toTopOf="@+id/textView28" />
 
-        <TextView
-            android:id="@+id/textView56"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Placed at "
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewConfirmation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
-            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="7dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/orderTrackingRecyclerViewId">
@@ -128,8 +119,8 @@
 
         <ImageView
             android:id="@+id/imageViewOrderPlaced"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView58"
@@ -138,7 +129,7 @@
         <View
             android:id="@+id/viewOrderPlaced"
             android:layout_width="5dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:background="@color/grey_font"
             app:layout_constraintEnd_toEndOf="@+id/imageViewOrderPlaced"
             app:layout_constraintStart_toStartOf="@+id/imageViewOrderPlaced"
@@ -147,8 +138,8 @@
 
         <ImageView
             android:id="@+id/imageViewAccepted"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewOrderPlaced"
             app:srcCompat="@drawable/trip_origin_icon" />
@@ -156,7 +147,7 @@
         <View
             android:id="@+id/viewAccepted"
             android:layout_width="5dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:background="@color/grey_font"
             app:layout_constraintEnd_toEndOf="@+id/imageViewAccepted"
             app:layout_constraintStart_toStartOf="@+id/imageViewAccepted"
@@ -165,8 +156,8 @@
 
         <ImageView
             android:id="@+id/imageViewBeingPrepared"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewAccepted"
             app:srcCompat="@drawable/trip_origin_icon" />
@@ -174,7 +165,7 @@
         <View
             android:id="@+id/viewBeingPrepared"
             android:layout_width="5dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:background="@color/grey_font"
             app:layout_constraintEnd_toEndOf="@+id/imageViewBeingPrepared"
             app:layout_constraintStart_toStartOf="@+id/imageViewBeingPrepared"
@@ -182,8 +173,8 @@
 
         <ImageView
             android:id="@+id/imageViewOutForDelivery"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewBeingPrepared"
             app:srcCompat="@drawable/trip_origin_icon" />
@@ -251,6 +242,36 @@
             android:text="On the way..."
             app:layout_constraintStart_toStartOf="@+id/textView63"
             app:layout_constraintTop_toBottomOf="@+id/textView63" />
+
+        <ImageView
+            android:id="@+id/imageViewDelivered"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/view3"
+            app:layout_constraintStart_toStartOf="@+id/view3"
+            app:layout_constraintTop_toBottomOf="@+id/view3"
+            app:srcCompat="@drawable/trip_origin_icon" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="5dp"
+            android:layout_height="30dp"
+            android:background="@color/grey_font"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewOutForDelivery"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewOutForDelivery" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Delivered"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewDelivered"
+            app:layout_constraintStart_toEndOf="@+id/imageViewDelivered"
+            app:layout_constraintTop_toTopOf="@+id/imageViewDelivered" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

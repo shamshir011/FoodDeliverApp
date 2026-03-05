@@ -16,8 +16,9 @@ import com.google.firebase.database.DatabaseReference
 class RestaurantRecommendedAdapter(
     private val context: Context,
     private val restaurantList: ArrayList<Restaurant>
-
 ): RecyclerView.Adapter<RestaurantRecommendedAdapter.ViewHolder>(){
+
+    private var isSearchMode = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder{
         val binding = RecommendedRestaurantsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -27,10 +28,12 @@ class RestaurantRecommendedAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int){
         holder.bind(position)
     }
-
-    override fun getItemCount(): Int{
-//        return restaurantList.size
-        return if (restaurantList.size > 10) 10 else restaurantList.size
+    override fun getItemCount(): Int {
+        return if (isSearchMode){
+            restaurantList.size      // 🔥 Show ALL during search
+        } else {
+            if (restaurantList.size > 10) 10 else restaurantList.size
+        }
     }
 
     inner class ViewHolder(private val binding: RecommendedRestaurantsBinding): RecyclerView.ViewHolder(binding.root) {
@@ -59,7 +62,8 @@ class RestaurantRecommendedAdapter(
 
         }
     }
-    fun updateList(newList: List<Restaurant>) {
+    fun updateList(newList: List<Restaurant>, searchMode: Boolean = false) {
+        isSearchMode = searchMode
         restaurantList.clear()
         restaurantList.addAll(newList)
         notifyDataSetChanged()

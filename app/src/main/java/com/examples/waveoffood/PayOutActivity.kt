@@ -95,7 +95,6 @@ class PayOutActivity : AppCompatActivity() {
         databaseReference.child("user").child(userId).child("BuyHistory")
             .child(orderDetails.itemPushKey!!)
             .setValue(orderDetails).addOnSuccessListener{
-
             }
     }
 

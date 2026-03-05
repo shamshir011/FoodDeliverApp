@@ -17,7 +17,6 @@ import com.example.waveoffood.databinding.FragmentHomeBinding
 import com.example.waveoffood.R
 import com.examples.waveoffood.Adapter.BannerSliderAdapter
 import com.examples.waveoffood.Adapter.FoodCategoryAdapter
-import com.examples.waveoffood.Adapter.MenuAdapter
 import com.examples.waveoffood.Adapter.RestaurantAdapter
 import com.examples.waveoffood.Adapter.RestaurantRecommendedAdapter
 import com.examples.waveoffood.Model.CategoryItem
@@ -52,7 +51,6 @@ class HomeFragment : Fragment() {
     private val foodMap = mutableMapOf<String, List<FoodItemModel>>()
     private val originalRecommendedList = mutableListOf<Restaurant>()
     private val originalBannerList = mutableListOf<RestaurantModel>()
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -251,7 +249,6 @@ private fun fetchRestaurants() {
             })
     }
 
-
     //    This adapter for category place
 private fun setFoodCategoryAdapter(){
 
@@ -319,9 +316,10 @@ private fun restaurantSetAdapter() {
         super.onViewCreated(view, savedInstanceState)
 
         val imageList = ArrayList<SlideModel>()
-        imageList.add(SlideModel(R.drawable.banner1, ScaleTypes.FIT))
-        imageList.add(SlideModel(R.drawable.banner2, ScaleTypes.FIT))
-        imageList.add(SlideModel(R.drawable.banner3, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.banner_a, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.banner_b, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.banner_c, ScaleTypes.FIT))
+        imageList.add(SlideModel(R.drawable.banner_d, ScaleTypes.FIT))
 
         val imageSlider = homeFragmentBiding.imageSlider
         imageSlider.setImageList(imageList)

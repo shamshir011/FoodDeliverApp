@@ -59,19 +59,3 @@ class CuisinesDishesAdapter(
         }
     }
 }
-
-
-
-//        private fun openDetailsActivity(position: Int) {
-//            val menuItems = cuisineDishes[position]
-//            // A intent to open details activity and pass the data
-//            val intent = Intent(requireContext, DetailsActivity::class.java).apply {
-//                putExtra("MenuItemName", menuItems.foodName)
-//                putExtra("MenuItemImage", menuItems.foodImage)
-//                putExtra("MenuItemDescription", menuItems.foodDescription)
-//                putExtra("MenuItemIngredients", menuItems.foodIngredient)
-//                putExtra("MenuItemPrice", menuItems.foodPrice)
-//            }
-//            // Start the details activity
-//            requireContext.startActivity(intent)
-//        }

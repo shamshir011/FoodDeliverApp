@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.waveoffood.R
 import com.example.waveoffood.databinding.ActivityMainBinding
-import com.examples.waveoffood.Fragment.Notification_Bottom_Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(){
@@ -29,11 +28,6 @@ class MainActivity : AppCompatActivity(){
         val navController: NavController = findNavController(R.id.fragmentContainerView)
         val bottomNav: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.setupWithNavController(navController)
-
-//        binding.notificationButton.setOnClickListener {
-//            val bottomSheetDialog = Notification_Bottom_Fragment()
-//            bottomSheetDialog.show(supportFragmentManager,"Test")
-//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean{

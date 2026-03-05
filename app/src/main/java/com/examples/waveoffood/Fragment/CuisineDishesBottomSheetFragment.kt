@@ -71,7 +71,6 @@ class CuisineDishesBottomSheetFragment : BottomSheetDialogFragment() {
 
     private fun setAdapter() {
         if(cuisineDishes.isNotEmpty()){
-// *****************           this is the original line     ********************
 //            val adapter = CuisinesDishesAdapter(cuisineDishes, requireContext())
             val adapter = CuisinesDishesAdapter(
                 cuisineDishes,

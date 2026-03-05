@@ -2,6 +2,7 @@ package com.examples.waveoffood
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,12 +20,16 @@ class PaymentCompletedActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        binding.continueToHome.setOnClickListener {
+        binding.continueToHome.setOnClickListener{
             // Go to MainActivity or Home
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
+        }
+
+        onBackPressedDispatcher.addCallback(this){
+            // Back button disabled intentionally
         }
     }
 }

@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
         android:text="@string/congrats_nyour_order_placed"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -21,16 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lottieAnimationView" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView9"-->
-<!--        android:layout_width="150dp"-->
-<!--        android:layout_height="150dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        android:src="@drawable/order_placed"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottieAnimationView"

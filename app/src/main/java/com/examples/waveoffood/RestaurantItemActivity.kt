@@ -35,11 +35,6 @@ class RestaurantItemActivity : AppCompatActivity() {
         binding.backNavigation.setOnClickListener{
             finish()
         }
-
-
-
-
-
         restaurantId = intent.getStringExtra("restaurantId") ?: ""
         binding.textViewRadius.text = intent.getStringExtra("restaurantDistance")
         binding.textViewDuration.text = intent.getStringExtra("restaurantDeliveryDuration")
@@ -82,7 +77,6 @@ class RestaurantItemActivity : AppCompatActivity() {
                 }
             })
     }
-
     private fun setAdapter() {
         restaurantItemAdapter =
             RestaurantItemAdapter(this, foodItemList)

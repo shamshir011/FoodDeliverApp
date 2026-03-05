@@ -47,9 +47,7 @@ class RestaurantRecommendedAdapter(
                 textViewDuration.text = restaurantItem.restaurantDeliveryDuration
                 Glide.with(context).load(uri).into(imageViewRestaurant)
             }
-
             binding.root.setOnClickListener {
-
                 Log.d("CLICK_DEBUG", "Clicked Key = ${restaurantItem.key}")
 
                 val intent = Intent(context, RestaurantItemActivity::class.java)

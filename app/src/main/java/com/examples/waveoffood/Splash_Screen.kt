@@ -14,12 +14,10 @@ class Splash_Screen : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash_screen)
 
-
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@Splash_Screen,StartActivity::class.java)
             startActivity(intent)
             finish()
         },3000)
-
     }
 }

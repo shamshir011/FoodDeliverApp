@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.waveoffood.databinding.FragmentCartBinding
 import com.examples.waveoffood.Adapter.CardAdapter
 import com.examples.waveoffood.Model.CartItems
-import com.examples.waveoffood.PayOutActivity
 import com.examples.waveoffood.PaymentMethodActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -100,26 +99,6 @@ class CartFragment : Fragment() {
         orderNow(foodName, foodPrice, foodDescription, foodImage, foodQuantities, restaurantId)
     }
 
-//    private fun orderNow(
-//        foodName: MutableList<String>,
-//        foodPrice: MutableList<String>,
-//        foodDescription: MutableList<String>,
-//        foodImage: MutableList<String>,
-//        foodQuantities: MutableList<Int>
-//    ) {
-//        if (!isAdded || context == null) return
-//
-//        val intent = Intent(requireContext(), PaymentMethodActivity::class.java).apply {
-//            putExtra("FoodItemName", foodName as ArrayList<String>)
-//            putExtra("FoodItemPrice", foodPrice as ArrayList<String>)
-//            putExtra("FoodItemImage", foodImage as ArrayList<String>)
-//            putExtra("FoodItemDescription", foodDescription as ArrayList<String>)
-//            putExtra("FoodItemQuantities", foodQuantities as ArrayList<Int>)
-//        }
-//        startActivity(intent)
-//    }
-
-   //*********************************************     New Added       ********************************************
    private fun orderNow(
        foodName: MutableList<String>,
        foodPrice: MutableList<String>,
@@ -144,8 +123,6 @@ class CartFragment : Fragment() {
        }
        startActivity(intent)
    }
-
-
     private fun calculateTotalAmount(): String {
 
         var total = 0

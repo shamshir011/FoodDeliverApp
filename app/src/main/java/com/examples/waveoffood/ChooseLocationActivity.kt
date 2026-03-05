@@ -11,7 +11,6 @@ class ChooseLocationActivity : AppCompatActivity() {
     private val binding: ActivityChooseLocationBinding by lazy {
         ActivityChooseLocationBinding.inflate(layoutInflater)
     }
-
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

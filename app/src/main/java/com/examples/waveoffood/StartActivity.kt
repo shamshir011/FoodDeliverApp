@@ -9,18 +9,12 @@ import com.example.waveoffood.databinding.ActivityStartBinding
 
 class StartActivity : AppCompatActivity(){
     private val binding: ActivityStartBinding by lazy{
-
         ActivityStartBinding.inflate(layoutInflater)
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         setContentView(binding.root)
-
-        binding.textView5.visibility = View.INVISIBLE
-
         binding.nextButton.setOnClickListener{
             val intent = Intent(this@StartActivity, LoginActivity::class.java)
             startActivity(intent)

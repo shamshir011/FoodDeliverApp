@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Chicken Spl Turkish Kebad Roll"
+            android:text="@string/chicken_spl_turkish_kebad_roll"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageViewImage" />
@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Juicy Turkish-style chicken kebab cooked with mild spices, rolled in a soft wrap with fresh onions and light souces, Smooth, flavourful and filling."
+            android:text="@string/descriptions"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
 
@@ -60,7 +60,7 @@
                 android:id="@+id/textView46"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Item ₹"
+                android:text="@string/add_item"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="247.62"
+                android:text="@string/_247_62"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 tools:layout_editor_absoluteX="159dp"

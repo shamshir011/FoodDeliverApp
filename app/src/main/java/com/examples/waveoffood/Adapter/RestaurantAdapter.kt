@@ -15,7 +15,6 @@ class RestaurantAdapter(
     private val restaurantList: MutableList<RestaurantModel>,
     private val foodMap: Map<String, List<FoodItemModel>>
 ) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
-
     inner class RestaurantViewHolder(val binding: RestaurantItemBinding)
         : RecyclerView.ViewHolder(binding.root)
 
@@ -27,13 +26,8 @@ class RestaurantAdapter(
         )
         return RestaurantViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
-
-
 //        This code for banner automatic loop
-
-
         val restaurant = restaurantList[position]
 
         holder.binding.textViewRestaurantName.text = restaurant.restaurantName

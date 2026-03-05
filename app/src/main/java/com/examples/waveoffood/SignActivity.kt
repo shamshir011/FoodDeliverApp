@@ -25,7 +25,6 @@ class SignActivity : AppCompatActivity() {
     private val binding: ActivitySignBinding by lazy{
         ActivitySignBinding.inflate(layoutInflater)
     }
-
     private lateinit var userName : String
     private lateinit var email: String
     private lateinit var password: String

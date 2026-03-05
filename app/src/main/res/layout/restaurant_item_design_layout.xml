@@ -54,7 +54,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Crispy Chicken Burger "
+            android:text="@string/crispy_chicken_burger"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/cardviewId"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="₹"
+            android:text="@string/rupee"
             app:layout_constraintStart_toStartOf="@+id/textViewItemName"
             app:layout_constraintTop_toBottomOf="@+id/textViewItemName" />
 
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Crispy Chicken Burger+Pri Peri Fries"
+            android:text="@string/crispy_chicken_burger_pri_peri_fries"
             app:layout_constraintStart_toStartOf="@+id/textView50"
             app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
 

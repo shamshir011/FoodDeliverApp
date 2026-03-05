@@ -61,8 +61,6 @@ class ProfileFragment : Fragment(){
         }
 
         return binding.root
-
-
     }
 
     private fun updateUserData(name: String, email: String, address: String, phone: String) {
@@ -103,7 +101,6 @@ class ProfileFragment : Fragment(){
                         }
                     }
                 }
-
                 override fun onCancelled(error: DatabaseError) {
 
                 }

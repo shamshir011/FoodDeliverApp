@@ -55,7 +55,7 @@ the main programming languages.XML is used" </string>
     <string name="payment_method">Payment Method</string>
     <string name="num">$5</string>
     <string name="go_home">Go Home</string>
-    <string name="congrats_nyour_order_placed">Congrats\nYour Order Placed</string>
+    <string name="congrats_nyour_order_placed">Congratulations!\nYour order has been placed successfully</string>
     <string name="menu">Menu</string>
     <string name="delivery_favourite_food">Delivery Favourite Food</string>
     <string name="email_or_phone_number">Email or Phone Number</string>
@@ -91,5 +91,13 @@ the main programming languages.XML is used" </string>
     <string name="delivery_favorite_food">Delivery Favorite Food</string>
     <string name="food_delivery_app">Food Delivery App</string>
     <string name="sign_up_with">Sign Up With</string>
+    <string name="recent_buy_items">Recent Buy Items</string>
+    <string name="_247_62">247.62</string>
+    <string name="add_item">Add Item ₹</string>
+    <string name="chicken_spl_turkish_kebad_roll">Chicken Spl Turkish Kebad Roll</string>
+    <string name="descriptions">Juicy Turkish-style chicken kebab cooked with mild spices, rolled in a soft wrap with fresh onions and light souces, Smooth, flavourful and filling.</string>
+    <string name="crispy_chicken_burger">Crispy Chicken Burger</string>
+    <string name="rupee">₹</string>
+    <string name="crispy_chicken_burger_pri_peri_fries">Crispy Chicken Burger+Pri Peri Fries</string>
 
 </resources>

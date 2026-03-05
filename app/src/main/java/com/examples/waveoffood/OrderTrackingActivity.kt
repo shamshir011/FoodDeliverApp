@@ -1,6 +1,7 @@
 package com.examples.waveoffood
 
 import android.R.attr.order
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.waveoffood.R
 import com.example.waveoffood.databinding.ActivityOrderTrackingBinding
 import com.examples.waveoffood.Adapter.HistoryAdapter
+import com.examples.waveoffood.Fragment.HistoryFragment
 import com.examples.waveoffood.Model.OrderDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -42,43 +44,12 @@ class OrderTrackingActivity : AppCompatActivity() {
         adapter = HistoryAdapter(orderList, this)
         binding.orderTrackingRecyclerViewId.layoutManager = LinearLayoutManager(this)
         binding.orderTrackingRecyclerViewId.adapter = adapter
-
         listenOrders()
+
+        binding.imageViewBackNavigation.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
     }
-//        private fun listenOrders(){
-//
-//        val currentUserId = auth.currentUser?.uid ?: return
-//
-//        databaseReference.child("OrderDetails")
-//            .addValueEventListener(object : ValueEventListener{
-//
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//
-//                    orderList.clear()
-//                    for (orderSnapshot in snapshot.children) {
-//                        val order = orderSnapshot.getValue(OrderDetails::class.java)
-//                        if (order != null && order.userUid == currentUserId) {
-//                            orderList.add(order)
-//                            order.itemPushKey?.let { orderId ->
-//                                order.restaurantId?.let { restId ->
-//                                    listenForOrderUpdates(orderId, restId)
-//                                }
-//                            }
-//                        }
-//                    }
-//                    val isEmpty = orderList.isEmpty()
-//
-//                    binding.emptyOrderLayout.root.visibility =
-//                        if (isEmpty) View.VISIBLE else View.GONE
-//
-//                    binding.orderLayout.visibility =
-//                        if (isEmpty) View.GONE else View.VISIBLE
-//
-//                    adapter.notifyDataSetChanged()
-//                }
-//                override fun onCancelled(error: DatabaseError) {}
-//            })
-//    }
 
     private fun listenOrders() {
         val currentUserId = auth.currentUser?.uid ?: return
@@ -134,29 +105,6 @@ class OrderTrackingActivity : AppCompatActivity() {
 
                     when (order.status) {
 
-//                        "Pending" -> {
-//                            showPlacedUI()
-//                        }
-//                        "Accepted" -> {
-//
-//                            // 🔥 Confirmation Message
-//                            binding.textViewConfirmation.text = "Your order has been accepted!"
-//                            binding.textViewConfirmation.setTextColor(
-//                                ContextCompat.getColor(this@OrderTrackingActivity, R.color.darkGreen)
-//                            )
-//
-//                            binding.cardViewConfirmation.setCardBackgroundColor(
-//                                ContextCompat.getColor(this@OrderTrackingActivity, R.color.lowGreen)
-//                            )
-//                            binding.viewAccepted.setBackgroundColor(
-//                                ContextCompat.getColor(this@OrderTrackingActivity, R.color.darkGreen)
-//                            )
-//
-//                            // 🔥 Change Accepted Step Icon
-//                            binding.imageViewAccepted.setImageResource(R.drawable.full_check_circle_icon)
-//                            binding.imageViewConfirmation.setImageResource(R.drawable.full_check_circle_icon)
-//                        }
-
                         "Pending" -> updateTrackingUI(1)
 
                         "Accepted" -> updateTrackingUI(2)
@@ -166,10 +114,8 @@ class OrderTrackingActivity : AppCompatActivity() {
                         "Out for Delivery" -> updateTrackingUI(4)
 
                         "Delivered" -> updateTrackingUI(5)
-
                     }
                 }
-
                 override fun onCancelled(error: DatabaseError) {}
             })
     }

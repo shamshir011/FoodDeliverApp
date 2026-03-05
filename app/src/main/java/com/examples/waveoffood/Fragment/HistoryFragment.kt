@@ -43,8 +43,6 @@ class HistoryFragment : Fragment(){
             val intent = Intent(requireContext(), OrderTrackingActivity::class.java);
             startActivity(intent)
         }
-
-
         loadHistoryItem()
 
         return orderBinding.root

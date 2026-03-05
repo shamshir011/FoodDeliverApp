@@ -9,7 +9,6 @@ import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.waveoffood.databinding.ActivityPaymentMethodBinding
-import com.examples.waveoffood.Fragment.ConratsBottomSheetFragment
 import com.examples.waveoffood.Model.OrderDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -98,45 +97,6 @@ class PaymentMethodActivity : AppCompatActivity() {
             finish()
         }
     }
-
-//    private fun placeOrder(){
-//        userId = auth.currentUser?.uid ?: ""
-//        val time = System.currentTimeMillis()
-//
-//        val itemPushKey = databaseReference.child("OrderDetails").push().key ?: return
-//        val orderDetails = OrderDetails(userId, restaurantId, name, foodItemName, foodItemPrice, foodItemImage, foodItemQuantities, address, totalAmount, phone, time, itemPushKey, false, true)
-//        // ✅ 1. Save in global order list
-//        databaseReference.child("OrderDetails")
-//            .child(itemPushKey)
-//            .setValue(orderDetails)
-//
-//        // ✅ 2. Save in user history
-//        databaseReference.child("user")
-//            .child(userId)
-//            .child("BuyHistory")
-//            .child(itemPushKey)
-//            .setValue(orderDetails)
-//
-//        // ✅ 3. MOST IMPORTANT → Save in restaurant node
-//        databaseReference.child("restaurantOrders")
-//            .child(restaurantId)
-//            .child(itemPushKey)
-//            .setValue(orderDetails)
-//            .addOnSuccessListener {
-//
-//                removeItemFromCart()
-//                val intent = Intent(this, PaymentCompletedActivity::class.java)
-//                startActivity(intent)
-//                finish()
-//            }
-//            .addOnFailureListener {
-//                Toast.makeText(this, "Order failed to send to restaurant", Toast.LENGTH_SHORT).show()
-//            }
-//    }
-
-
-
-    /*************************************************************************************************************/
     private fun placeOrder() {
 
         val userId = auth.currentUser?.uid ?: return
@@ -230,8 +190,6 @@ class PaymentMethodActivity : AppCompatActivity() {
 
         }, 3000)
     }
-
-
 //    For valid Upi Id
 private fun isValidUpiId(upi: String): Boolean {
     val regex = Regex("^[a-zA-Z0-9._-]{2,}@[a-zA-Z]{2,}$")

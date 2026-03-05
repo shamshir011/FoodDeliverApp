@@ -12,11 +12,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 class DetailsActivity : AppCompatActivity() {
-
     private val binding: ActivityDetailsBinding by lazy {
         ActivityDetailsBinding.inflate(layoutInflater)
     }
-
     private var foodName: String? = null
     private var foodImage: String? = null
     private var foodDescription: String? = null

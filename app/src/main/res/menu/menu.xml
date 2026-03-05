@@ -9,10 +9,6 @@
         android:id="@+id/cartFragment"
         android:icon="@drawable/shopping_cart"/>
 
-    <item android:title="@string/search"
-        android:id="@+id/searchFragment"
-        android:icon="@drawable/search_icon"/>
-
     <item android:title="@string/order"
         android:id="@+id/historyFragment"
         android:icon="@drawable/history_icon"/>

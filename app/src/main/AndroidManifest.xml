@@ -19,9 +19,6 @@
             android:name="com.examples.waveoffood.OrderTrackingActivity"
             android:exported="false" />
         <activity
-            android:name="com.examples.waveoffood.YourOrderActivity"
-            android:exported="false" />
-        <activity
             android:name="com.examples.waveoffood.PaymentCompletedActivity"
             android:exported="false" />
         <activity
@@ -30,14 +27,9 @@
         <activity
             android:name="com.examples.waveoffood.RestaurantItemActivity"
             android:exported="false" />
-        <activity
-            android:name="com.examples.waveoffood.RecentOrderItems"
-            android:exported="false" />
+
         <activity
             android:name="com.examples.waveoffood.DetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.examples.waveoffood.PayOutActivity"
             android:exported="false" />
         <activity
             android:name="com.examples.waveoffood.ChooseLocationActivity"
@@ -48,9 +40,7 @@
         <activity
             android:name="com.examples.waveoffood.LoginActivity"
             android:exported="true" />
-        <activity
-            android:name="com.examples.waveoffood.StartActivity"
-            android:exported="false" />
+
         <activity
             android:name="com.examples.waveoffood.Splash_Screen"
             android:exported="true">

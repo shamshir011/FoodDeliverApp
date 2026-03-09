@@ -82,8 +82,6 @@ class HomeFragment : Fragment() {
                         foodCategories.add(it)
                     }
                 }
-                homeFragmentBiding.categoryProgressBar.visibility = View.INVISIBLE
-                homeFragmentBiding.recyclerViewCategory.visibility = View.VISIBLE
 
                 setFoodCategoryAdapter()
             }
@@ -103,6 +101,8 @@ class HomeFragment : Fragment() {
     foodRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
         override fun onDataChange(snapshot: DataSnapshot) {
+            homeFragmentBiding.progressBarNeutral.visibility = View.GONE
+            homeFragmentBiding.constraintLayout.visibility = View.VISIBLE
 
             restaurantItems.clear()
 
@@ -120,9 +120,6 @@ class HomeFragment : Fragment() {
             }
             originalRecommendedList.clear()
             originalRecommendedList.addAll(restaurantItems)
-
-            homeFragmentBiding.recommendedProgressBar.visibility = View.INVISIBLE
-            homeFragmentBiding.recommendedRecyclerView.visibility = View.VISIBLE
 
             restaurantSetAdapter()
         }

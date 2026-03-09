@@ -21,31 +21,6 @@
         android:layout_marginStart="8dp">
 
         <TextView
-            android:id="@+id/textView25"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Order Tracking"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewBackNavigation" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/orderTrackingRecyclerViewId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView28"
-            tools:listitem="@layout/buy_again_item" />
-
-        <TextView
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,213 +40,252 @@
             app:layout_constraintStart_toEndOf="@+id/textView28"
             app:layout_constraintTop_toTopOf="@+id/textView28" />
 
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/order_trackings"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewBackNavigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewBackNavigation"
+            app:layout_constraintTop_toTopOf="@+id/imageViewBackNavigation" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewConfirmation"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="7dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/orderTrackingRecyclerViewId">
+            app:layout_constraintTop_toBottomOf="@+id/textView28">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/imageViewConfirmation"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/orderTrackingRecyclerViewId"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/buy_again_item" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewConfirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/orderTrackingRecyclerViewId">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageViewConfirmation"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/trip_origin_icon" />
+
+                        <TextView
+                            android:id="@+id/textViewConfirmation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/lato_bold"
+                            android:text="@string/waiting_for_confirmation"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageViewConfirmation"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.516" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/textView58"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Order Status"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewConfirmation" />
+
+                <ImageView
+                    android:id="@+id/imageViewOrderPlaced"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView58"
+                    app:srcCompat="@drawable/trip_origin_icon" />
+
+                <View
+                    android:id="@+id/viewOrderPlaced"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="@color/grey_font"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewOrderPlaced"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewOrderPlaced"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewOrderPlaced" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewAccepted"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewOrderPlaced"
+                    app:srcCompat="@drawable/trip_origin_icon" />
+
+                <View
+                    android:id="@+id/viewAccepted"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="@color/grey_font"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewAccepted"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewAccepted"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewAccepted" />
+
+
+                <ImageView
+                    android:id="@+id/imageViewBeingPrepared"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewAccepted"
+                    app:srcCompat="@drawable/trip_origin_icon" />
+
+                <View
+                    android:id="@+id/viewBeingPrepared"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="@color/grey_font"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewBeingPrepared"
+                    app:layout_constraintStart_toStartOf="@+id/imageViewBeingPrepared"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewBeingPrepared" />
+
+                <ImageView
+                    android:id="@+id/imageViewOutForDelivery"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewBeingPrepared"
                     app:srcCompat="@drawable/trip_origin_icon" />
 
                 <TextView
-                    android:id="@+id/textViewConfirmation"
+                    android:id="@+id/textView59"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="@string/waiting_for_confirmation"
+                    android:text="Order Placed"
                     android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewConfirmation"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.516" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewOrderPlaced"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewOrderPlaced"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewOrderPlaced" />
+
+                <TextView
+                    android:id="@+id/textView60"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Accepted"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewAccepted"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewAccepted"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewAccepted" />
+
+                <TextView
+                    android:id="@+id/textView61"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Being Prepared"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewBeingPrepared"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewBeingPrepared"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewBeingPrepared" />
+
+                <TextView
+                    android:id="@+id/textView62"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="In Kitchen..."
+                    app:layout_constraintStart_toStartOf="@+id/textView61"
+                    app:layout_constraintTop_toBottomOf="@+id/textView61" />
+
+                <TextView
+                    android:id="@+id/textView63"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Out for Delivery"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewOutForDelivery"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewOutForDelivery"
+                    app:layout_constraintTop_toBottomOf="@+id/viewBeingPrepared" />
+
+                <TextView
+                    android:id="@+id/textView64"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On the way..."
+                    app:layout_constraintStart_toStartOf="@+id/textView63"
+                    app:layout_constraintTop_toBottomOf="@+id/textView63" />
+
+                <ImageView
+                    android:id="@+id/imageViewDelivered"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    app:layout_constraintEnd_toEndOf="@+id/viewOutForDelivery"
+                    app:layout_constraintStart_toStartOf="@+id/viewOutForDelivery"
+                    app:layout_constraintTop_toBottomOf="@+id/viewOutForDelivery"
+                    app:srcCompat="@drawable/trip_origin_icon" />
+
+                <View
+                    android:id="@+id/viewOutForDelivery"
+                    android:layout_width="5dp"
+                    android:layout_height="30dp"
+                    android:background="@color/grey_font"
+                    app:layout_constraintEnd_toEndOf="@+id/imageViewOutForDelivery"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageViewOutForDelivery" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Delivered"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewDelivered"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewDelivered"
+                    app:layout_constraintTop_toTopOf="@+id/imageViewDelivered" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+        </ScrollView>
 
-        <TextView
-            android:id="@+id/textView58"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Order Status"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewConfirmation" />
-
-        <ImageView
-            android:id="@+id/imageViewOrderPlaced"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView58"
-            app:srcCompat="@drawable/trip_origin_icon" />
-
-        <View
-            android:id="@+id/viewOrderPlaced"
-            android:layout_width="5dp"
-            android:layout_height="30dp"
-            android:background="@color/grey_font"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewOrderPlaced"
-            app:layout_constraintStart_toStartOf="@+id/imageViewOrderPlaced"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewOrderPlaced" />
-
-
-        <ImageView
-            android:id="@+id/imageViewAccepted"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewOrderPlaced"
-            app:srcCompat="@drawable/trip_origin_icon" />
-
-        <View
-            android:id="@+id/viewAccepted"
-            android:layout_width="5dp"
-            android:layout_height="30dp"
-            android:background="@color/grey_font"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewAccepted"
-            app:layout_constraintStart_toStartOf="@+id/imageViewAccepted"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewAccepted" />
-
-
-        <ImageView
-            android:id="@+id/imageViewBeingPrepared"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewAccepted"
-            app:srcCompat="@drawable/trip_origin_icon" />
-
-        <View
-            android:id="@+id/viewBeingPrepared"
-            android:layout_width="5dp"
-            android:layout_height="30dp"
-            android:background="@color/grey_font"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewBeingPrepared"
-            app:layout_constraintStart_toStartOf="@+id/imageViewBeingPrepared"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewBeingPrepared" />
-
-        <ImageView
-            android:id="@+id/imageViewOutForDelivery"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewBeingPrepared"
-            app:srcCompat="@drawable/trip_origin_icon" />
-
-        <TextView
-            android:id="@+id/textView59"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Order Placed"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewOrderPlaced"
-            app:layout_constraintStart_toEndOf="@+id/imageViewOrderPlaced"
-            app:layout_constraintTop_toTopOf="@+id/imageViewOrderPlaced" />
-
-        <TextView
-            android:id="@+id/textView60"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Accepted"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewAccepted"
-            app:layout_constraintStart_toEndOf="@+id/imageViewAccepted"
-            app:layout_constraintTop_toTopOf="@+id/imageViewAccepted" />
-
-        <TextView
-            android:id="@+id/textView61"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Being Prepared"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewBeingPrepared"
-            app:layout_constraintStart_toEndOf="@+id/imageViewBeingPrepared"
-            app:layout_constraintTop_toTopOf="@+id/imageViewBeingPrepared" />
-
-        <TextView
-            android:id="@+id/textView62"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="In Kitchen..."
-            app:layout_constraintStart_toStartOf="@+id/textView61"
-            app:layout_constraintTop_toBottomOf="@+id/textView61" />
-
-        <TextView
-            android:id="@+id/textView63"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Out for Delivery"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewOutForDelivery"
-            app:layout_constraintStart_toEndOf="@+id/imageViewOutForDelivery"
-            app:layout_constraintTop_toBottomOf="@+id/viewBeingPrepared" />
-
-        <TextView
-            android:id="@+id/textView64"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="On the way..."
-            app:layout_constraintStart_toStartOf="@+id/textView63"
-            app:layout_constraintTop_toBottomOf="@+id/textView63" />
-
-        <ImageView
-            android:id="@+id/imageViewDelivered"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            app:layout_constraintEnd_toEndOf="@+id/view3"
-            app:layout_constraintStart_toStartOf="@+id/view3"
-            app:layout_constraintTop_toBottomOf="@+id/view3"
-            app:srcCompat="@drawable/trip_origin_icon" />
-
-        <View
-            android:id="@+id/view3"
-            android:layout_width="5dp"
-            android:layout_height="30dp"
-            android:background="@color/grey_font"
-            app:layout_constraintEnd_toEndOf="@+id/imageViewOutForDelivery"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewOutForDelivery" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Delivered"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewDelivered"
-            app:layout_constraintStart_toEndOf="@+id/imageViewDelivered"
-            app:layout_constraintTop_toTopOf="@+id/imageViewDelivered" />
 
         <ImageView
             android:id="@+id/imageViewBackNavigation"
@@ -281,6 +295,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/arrow_back" />
+
+        <ProgressBar
+            android:id="@+id/progressBarOrderTracking"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/crimsonRed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

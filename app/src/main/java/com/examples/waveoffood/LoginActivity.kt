@@ -134,10 +134,13 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onStart(){
+    override fun onStart() {
         super.onStart()
-        val currentUser: FirebaseUser? = auth.currentUser
-        if(currentUser != null){
+
+        val currentUser = auth.currentUser
+        val googleAccount = GoogleSignIn.getLastSignedInAccount(this)
+
+        if (currentUser != null && googleAccount != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

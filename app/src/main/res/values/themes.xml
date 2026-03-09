@@ -3,7 +3,7 @@
     <style name="Base.Theme.WaveOfFood" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/textColor</item>
-        <item name="colorSecondary">@color/design_default_color_secondary</item>
+        <item name="colorSecondary">@color/crimsonRed</item>
         <item name="colorPrimaryVariant">@color/design_default_color_primary_variant</item>
 
 <!--        <item name="android:statusBarColor">@color/design_default_color_primary_dark</item>-->
@@ -15,7 +15,7 @@
     <style name="themes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/textColor</item>
-        <item name="colorSecondary">@color/design_default_color_secondary</item>
+        <item name="colorSecondary">@color/crimsonRed</item>
         <item name="colorPrimaryVariant">@color/design_default_color_primary_variant</item>
 
         <item name="android:statusBarColor">@color/textColor</item>

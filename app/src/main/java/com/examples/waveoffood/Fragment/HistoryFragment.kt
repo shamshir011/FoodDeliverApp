@@ -11,6 +11,7 @@ import com.example.waveoffood.databinding.FragmentHistoryBinding
 import com.examples.waveoffood.Adapter.HistoryAdapter
 import com.examples.waveoffood.Adapter.RestaurantRecommendedAdapter
 import com.examples.waveoffood.Model.OrderDetails
+import com.examples.waveoffood.Model.OrderItem
 import com.examples.waveoffood.OrderTrackingActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -22,7 +23,7 @@ import java.util.ArrayList
 
 class HistoryFragment : Fragment(){
     private lateinit var orderBinding: FragmentHistoryBinding
-    private lateinit var orderList: ArrayList<OrderDetails>
+    private lateinit var orderItemList: ArrayList<OrderItem>
     private lateinit var adapter: HistoryAdapter
     private lateinit var auth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
@@ -37,7 +38,7 @@ class HistoryFragment : Fragment(){
         auth = FirebaseAuth.getInstance()
         databaseReference = FirebaseDatabase.getInstance().getReference()
 
-        orderList = ArrayList()
+        orderItemList = ArrayList()
 
         orderBinding.cardViewOrders.setOnClickListener {
             val intent = Intent(requireContext(), OrderTrackingActivity::class.java);
@@ -49,35 +50,55 @@ class HistoryFragment : Fragment(){
     }
 
     private fun loadHistoryItem(){
+
         val currentUserId = FirebaseAuth.getInstance().currentUser!!.uid
 
         orderBinding.progressBar.visibility = View.VISIBLE
+
         val databaseRef = FirebaseDatabase.getInstance()
-            .getReference("OrderDetails")
+            .getReference("user")
+            .child(currentUserId)
+            .child("BuyHistory")
 
-        databaseRef.orderByChild("userUid")
-            .equalTo(currentUserId)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
+        databaseRef.addListenerForSingleValueEvent(object : ValueEventListener {
 
-                    orderList.clear()
+            override fun onDataChange(snapshot: DataSnapshot) {
 
-                    for(foodSnapshot in snapshot.children){
-                        val categoryItem = foodSnapshot.getValue(OrderDetails::class.java)
-                        categoryItem?.let {
-                            orderList.add(it)
+                orderItemList.clear()
+
+                for(foodSnapshot in snapshot.children){
+
+                    val orderDetails = foodSnapshot.getValue(OrderDetails::class.java)
+
+                    orderDetails?.let { order ->
+
+                        val names = order.foodNames ?: emptyList()
+                        val quantities = order.foodQuantities ?: emptyList()
+                        val prices = order.foodPrices ?: emptyList()
+                        val images = order.foodImages ?: emptyList()
+
+                        for(i in names.indices){
+                            val item = OrderItem(
+                                foodName = names.getOrNull(i) ?: "",
+                                quantity = quantities.getOrNull(i) ?: 0,
+                                price = prices.getOrNull(i) ?: "",
+                                image = images.getOrNull(i) ?: ""
+                            )
+                            orderItemList.add(item)
                         }
                     }
-                    historyAdapter()
-                    orderBinding.progressBar.visibility = View.GONE
                 }
 
-                override fun onCancelled(error: DatabaseError) {}
-            })
+                historyAdapter()
+                orderBinding.progressBar.visibility = View.GONE
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     private fun historyAdapter(){
-        adapter = HistoryAdapter(orderList,requireContext())
+        adapter = HistoryAdapter(orderItemList,requireContext())
         orderBinding.recyclerViewHistory.layoutManager = LinearLayoutManager(requireContext())
         orderBinding.recyclerViewHistory.adapter = adapter
     }

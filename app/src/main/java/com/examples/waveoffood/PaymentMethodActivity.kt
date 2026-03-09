@@ -18,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 class PaymentMethodActivity : AppCompatActivity() {
-
     private val binding: ActivityPaymentMethodBinding by lazy{
         ActivityPaymentMethodBinding.inflate(layoutInflater)
     }

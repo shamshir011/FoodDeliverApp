@@ -7,10 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.waveoffood.R
 import com.example.waveoffood.databinding.FragmentProfileBinding
 import com.examples.waveoffood.LoginActivity
 import com.examples.waveoffood.Model.UserModel
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -54,12 +57,36 @@ class ProfileFragment : Fragment(){
         }
 
         binding.cardViewLogout.setOnClickListener {
-            auth.signOut()
-            val intent = Intent(context, LoginActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        }
 
+            val dialogMessage = AlertDialog.Builder(requireContext())
+            dialogMessage.setTitle("Quiz Game")
+            dialogMessage.setMessage("If you want sign out click Yes\notherwise click No.")
+            dialogMessage.setCancelable(false)
+
+            dialogMessage.setPositiveButton("Yes") { _, _ ->
+
+                auth.signOut()
+
+                val googleSignInClient = GoogleSignIn.getClient(
+                    requireContext(),
+                    GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .build()
+                )
+
+                googleSignInClient.signOut()
+
+                val intent = Intent(requireContext(), LoginActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            }
+
+            dialogMessage.setNegativeButton("No") { _, _ ->
+                Toast.makeText(requireContext(), "I don't want to Sign Out", Toast.LENGTH_SHORT).show()
+            }
+
+            dialogMessage.create().show()
+        }
         return binding.root
     }
 

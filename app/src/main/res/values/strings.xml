@@ -99,5 +99,7 @@ the main programming languages.XML is used" </string>
     <string name="crispy_chicken_burger">Crispy Chicken Burger</string>
     <string name="rupee">₹</string>
     <string name="crispy_chicken_burger_pri_peri_fries">Crispy Chicken Burger+Pri Peri Fries</string>
+    <string name="craving_something_delicious">Craving Something Delicious?</string>
+    <string name="order_trackings">Order Tracking</string>
 
 </resources>

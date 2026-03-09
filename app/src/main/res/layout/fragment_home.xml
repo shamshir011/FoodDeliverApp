@@ -34,64 +34,15 @@
         app:layout_constraintTop_toBottomOf="@+id/image_slider" />
 
     <ProgressBar
-        android:id="@+id/categoryProgressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:id="@+id/progressBarNeutral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:indeterminate="true"
         android:indeterminateTint="@color/crimsonRed"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCategory"
         app:layout_constraintEnd_toEndOf="@+id/recyclerViewCategory"
         app:layout_constraintStart_toStartOf="@+id/recyclerViewCategory"
         app:layout_constraintTop_toTopOf="@+id/recyclerViewCategory" />
-
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/constraintLayout3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView8"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:srcCompat="@drawable/location_icon" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView21"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/archivo_black"-->
-<!--            android:text="Tugalpur"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/imageView8"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/imageView8"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/imageView8" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView12"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/textView21"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/textView21"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:srcCompat="@drawable/keyboard_arrow_down" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView31"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Greater Noida"-->
-<!--            android:textColor="@color/white"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/imageView8" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
     <SearchView
         android:id="@+id/searchViewRestaurant"
@@ -118,8 +69,10 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewCategory">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
 
             <TextView
@@ -140,17 +93,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView33" />
-
-            <ProgressBar
-                android:id="@+id/recommendedProgressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:indeterminateTint="@color/crimsonRed"
-                app:layout_constraintBottom_toBottomOf="@+id/recommendedRecyclerView"
-                app:layout_constraintEnd_toEndOf="@+id/recommendedRecyclerView"
-                app:layout_constraintStart_toStartOf="@+id/recommendedRecyclerView"
-                app:layout_constraintTop_toTopOf="@+id/recommendedRecyclerView" />
 
             <TextView
                 android:id="@+id/textViewCountRestaurant"
@@ -187,7 +129,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView37"/>
+                app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

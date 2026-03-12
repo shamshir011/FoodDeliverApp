@@ -1,5 +1,6 @@
 package com.examples.waveoffood.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.waveoffood.databinding.FragmentAddToCartBottomSheetBinding
+import com.examples.waveoffood.MainActivity
 import com.examples.waveoffood.Model.CartItems
 import com.examples.waveoffood.Model.FoodItemModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -62,10 +64,46 @@ class AddToCartBottomSheetFragment : BottomSheetDialogFragment() {
             .into(binding.imageViewImage)
 
         binding.addItem.setOnClickListener {
-            addItemToCart()
+//            addItemToCart()
+            checkUserProfile()
         }
 
         return binding.root
+    }
+
+    private fun checkUserProfile() {
+
+        val userId = auth.currentUser?.uid ?: return
+        val database = FirebaseDatabase.getInstance().reference
+
+        database.child("user").child(userId)
+            .get()
+            .addOnSuccessListener { snapshot ->
+
+                val name = snapshot.child("name").getValue(String::class.java) ?: ""
+                val address = snapshot.child("address").getValue(String::class.java) ?: ""
+                val phone = snapshot.child("phone").getValue(String::class.java) ?: ""
+
+                if (name.isBlank() || address.isBlank() || phone.isBlank()) {
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Please complete your profile first",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    startActivity(
+                        Intent(requireContext(), MainActivity::class.java).apply {
+                            putExtra("navigateToProfile", true)
+                        }
+                    )
+
+                    dismiss()
+
+                } else {
+                    addItemToCart()
+                }
+            }
     }
 
     private fun addItemToCart() {

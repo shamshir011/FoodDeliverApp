@@ -24,10 +24,15 @@ class MainActivity : AppCompatActivity(){
         enableEdgeToEdge()
         setContentView(binding.root)
 
-
         val navController: NavController = findNavController(R.id.fragmentContainerView)
         val bottomNav: BottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNav.setupWithNavController(navController)
+
+        val navigateToProfile = intent.getBooleanExtra("navigateToProfile", false)
+
+        if (navigateToProfile) {
+            binding.bottomNavigationView.selectedItemId = R.id.profileFragment
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean{

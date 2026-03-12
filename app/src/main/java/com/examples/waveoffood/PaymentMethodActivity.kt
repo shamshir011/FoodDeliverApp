@@ -63,9 +63,7 @@ class PaymentMethodActivity : AppCompatActivity() {
         binding.totalBill.setText(totalAmount)
 
         binding.payNowButton.setOnClickListener {
-
             when {
-
                 binding.radioUPI.isChecked -> {
 
                     val upiId = binding.editUpi.text.toString().trim()
@@ -190,8 +188,8 @@ class PaymentMethodActivity : AppCompatActivity() {
         }, 3000)
     }
 //    For valid Upi Id
-private fun isValidUpiId(upi: String): Boolean {
-    val regex = Regex("^[a-zA-Z0-9._-]{2,}@[a-zA-Z]{2,}$")
-    return regex.matches(upi)
-}
+    private fun isValidUpiId(upi: String): Boolean {
+        val regex = Regex("^[a-zA-Z0-9._-]{2,}@[a-zA-Z]{2,}$")
+        return regex.matches(upi)
+    }
 }

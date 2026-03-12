@@ -45,10 +45,6 @@ class CuisinesDishesAdapter(
             }
         }
 
-
-
-
-        // Set data in to recyclerview items, price, image
         fun bind(position: Int){
             val cuisineDish  = cuisineDishes[position]
             binding.apply{

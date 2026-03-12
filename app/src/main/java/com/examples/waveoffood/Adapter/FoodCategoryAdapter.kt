@@ -76,27 +76,6 @@ class FoodCategoryAdapter(
         private val binding: FoodCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-//fun bind(category: FoodCategory) {
-//
-//    binding.categoryName.text = category.foodCategoryName
-//
-//    Glide.with(binding.root.context)
-//        .load(category.foodCategoryImage)
-//        .into(binding.categoryImage)
-//
-//    if (adapterPosition == selectedPosition) {
-//        binding.selectedLine.visibility = View.VISIBLE
-//    } else {
-//        binding.selectedLine.visibility = View.GONE
-//    }
-//
-//    binding.root.setOnClickListener {
-//        selectedPosition = adapterPosition
-//        notifyDataSetChanged()
-//        onCategoryClick(category)
-//    }
-//}
-
         fun bind(category: FoodCategory) {
 
             binding.categoryName.text = category.foodCategoryName

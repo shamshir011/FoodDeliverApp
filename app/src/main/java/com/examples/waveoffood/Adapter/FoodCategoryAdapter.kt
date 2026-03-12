@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.waveoffood.R
 import com.example.waveoffood.databinding.FoodCategoryBinding
 import com.example.waveoffood.databinding.ViewAllLayoutDesignBinding
 import com.examples.waveoffood.Model.CategoryItem
@@ -41,9 +42,6 @@ class FoodCategoryAdapter(
         }
     }
 
-
-
-
     override fun getItemViewType(position: Int): Int {
         return when (categoryItems[position]) {
             is CategoryItem.Food -> TYPE_CATEGORY
@@ -74,32 +72,58 @@ class FoodCategoryAdapter(
         }
     }
 
-    // ---------------- ViewHolders ----------------
-
     inner class CategoryViewHolder(
         private val binding: FoodCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-fun bind(category: FoodCategory) {
+//fun bind(category: FoodCategory) {
+//
+//    binding.categoryName.text = category.foodCategoryName
+//
+//    Glide.with(binding.root.context)
+//        .load(category.foodCategoryImage)
+//        .into(binding.categoryImage)
+//
+//    if (adapterPosition == selectedPosition) {
+//        binding.selectedLine.visibility = View.VISIBLE
+//    } else {
+//        binding.selectedLine.visibility = View.GONE
+//    }
+//
+//    binding.root.setOnClickListener {
+//        selectedPosition = adapterPosition
+//        notifyDataSetChanged()
+//        onCategoryClick(category)
+//    }
+//}
 
-    binding.categoryName.text = category.foodCategoryName
+        fun bind(category: FoodCategory) {
 
-    Glide.with(binding.root.context)
-        .load(category.foodCategoryImage)
-        .into(binding.categoryImage)
+            binding.categoryName.text = category.foodCategoryName
 
-    if (adapterPosition == selectedPosition) {
-        binding.selectedLine.visibility = View.VISIBLE
-    } else {
-        binding.selectedLine.visibility = View.GONE
-    }
+            if (category.foodCategoryImage.isNullOrEmpty()) {
 
-    binding.root.setOnClickListener {
-        selectedPosition = adapterPosition
-        notifyDataSetChanged()
-        onCategoryClick(category)
-    }
-}
+                binding.categoryImage.setImageResource(R.drawable.all_food_image)
+
+            } else {
+
+                Glide.with(binding.root.context)
+                    .load(category.foodCategoryImage)
+                    .into(binding.categoryImage)
+            }
+
+            if (adapterPosition == selectedPosition) {
+                binding.selectedLine.visibility = View.VISIBLE
+            } else {
+                binding.selectedLine.visibility = View.GONE
+            }
+
+            binding.root.setOnClickListener {
+                selectedPosition = adapterPosition
+                notifyDataSetChanged()
+                onCategoryClick(category)
+            }
+        }
 }
 
     inner class ViewAllViewHolder(

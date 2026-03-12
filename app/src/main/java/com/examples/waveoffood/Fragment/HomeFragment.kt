@@ -76,6 +76,11 @@ class HomeFragment : Fragment() {
         foodRef.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 foodCategories.clear()
+                foodCategories.add(
+                    FoodCategory(
+                        foodCategoryName = "All"
+                    )
+                )
                 for (foodSnapshot in snapshot.children) {
                     val foodCategory = foodSnapshot.getValue(FoodCategory::class.java)
                     foodCategory?.let {
@@ -271,6 +276,7 @@ private fun setFoodCategoryAdapter(){
             uiList,
             onCategoryClick = { category ->
                 val categoryName = category.foodCategoryName ?: return@FoodCategoryAdapter
+                highlightSelectedCategory(categoryName)
 
                 if (categoryName == "All") {
                     fetchRestaurants()

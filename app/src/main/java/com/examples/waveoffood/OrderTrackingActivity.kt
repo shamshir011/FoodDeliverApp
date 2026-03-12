@@ -54,51 +54,6 @@ class OrderTrackingActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
     }
-
-//    private fun listenOrders() {
-//        val currentUserId = auth.currentUser?.uid ?: return
-//        databaseReference.child("OrderDetails")
-//            .orderByChild("userUid")
-//            .equalTo(currentUserId)
-//            .addListenerForSingleValueEvent(object : ValueEventListener {
-//
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    var latestOrder: OrderDetails? = null
-//                    for (orderSnapshot in snapshot.children) {
-//                        val order = orderSnapshot.getValue(OrderDetails::class.java)
-//                        if (order != null) {
-//                            if (latestOrder == null ||
-//                                order.currentTime > latestOrder.currentTime) {
-//                                latestOrder = order
-//                            }
-//                        }
-//                    }
-//                    if (latestOrder != null) {
-//                        orderList.clear()
-//                        orderList.add(latestOrder)
-//
-////                        Its showing orderId
-//                        binding.textViewOrderId.text = "#${latestOrder.itemPushKey?.takeLast(6)}"
-//
-//                        latestOrder.itemPushKey?.let { orderId ->
-//                            latestOrder.restaurantId?.let { restId ->
-//                                listenForOrderUpdates(orderId, restId)
-//                            }
-//                        }
-//                        binding.emptyOrderLayout.root.visibility = View.GONE
-//                        binding.orderLayout.visibility = View.VISIBLE
-//                    } else {
-//                        binding.emptyOrderLayout.root.visibility = View.VISIBLE
-//                        binding.orderLayout.visibility = View.GONE
-//                    }
-//                    adapter.notifyDataSetChanged()
-//                }
-//                override fun onCancelled(error: DatabaseError) {}
-//            })
-//    }
-
-
-//    New code  ******************************************************************
     private fun listenOrders() {
 
         val currentUserId = auth.currentUser?.uid ?: return
@@ -199,13 +154,6 @@ class OrderTrackingActivity : AppCompatActivity() {
                 override fun onCancelled(error: DatabaseError) {}
             })
     }
-
-//    private fun showPlacedUI(){
-//        binding.imageViewOrderPlaced.setImageResource(R.drawable.full_check_circle_icon)
-//        binding.viewOrderPlaced.setBackgroundColor(
-//            ContextCompat.getColor(this@OrderTrackingActivity, R.color.darkGreen)
-//        )
-//    }
 private fun showRejectedUI() {
     binding.textViewConfirmation.text = "Sorry, the restaurant rejected your order"
     binding.textViewConfirmation.setTextColor(

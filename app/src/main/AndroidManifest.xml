@@ -31,9 +31,7 @@
         <activity
             android:name="com.examples.waveoffood.DetailsActivity"
             android:exported="false" />
-        <activity
-            android:name="com.examples.waveoffood.ChooseLocationActivity"
-            android:exported="false" />
+
         <activity
             android:name="com.examples.waveoffood.SignActivity"
             android:exported="false" />
@@ -68,7 +66,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
         <meta-data
-            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:name="com.google.firebase.messaging.default_notification_Picon"
             android:resource="@drawable/bell" />
     </application>
 

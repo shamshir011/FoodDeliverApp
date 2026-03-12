@@ -12,25 +12,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardviewId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageViewItemImage"
+            android:layout_width="140dp"
+            android:layout_height="110dp"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <ImageView
-                android:id="@+id/imageViewItemImage"
-                android:layout_width="140dp"
-                android:layout_height="110dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedImage2"
+            tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/textView53"
@@ -43,9 +33,9 @@
             android:text="@string/add"
             android:textColor="@color/crimsonRed"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/cardviewId"
-            app:layout_constraintStart_toStartOf="@+id/cardviewId"
-            app:layout_constraintTop_toBottomOf="@+id/cardviewId" />
+            app:layout_constraintEnd_toEndOf="@+id/imageViewItemImage"
+            app:layout_constraintStart_toStartOf="@+id/imageViewItemImage"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewItemImage" />
 
         <TextView
             android:id="@+id/textViewItemName"
@@ -57,8 +47,8 @@
             android:text="@string/crispy_chicken_burger"
             android:textColor="@color/black"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/cardviewId"
-            app:layout_constraintTop_toTopOf="@+id/cardviewId" />
+            app:layout_constraintStart_toEndOf="@+id/imageViewItemImage"
+            app:layout_constraintTop_toTopOf="@+id/imageViewItemImage" />
 
         <TextView
             android:id="@+id/textView50"
